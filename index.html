@@ -390,35 +390,20 @@
                 📍 Rua Cassilândia, 1068 - Chapadão do Sul, MS
             </p>
             
-            <!-- Chamada para os botões -->
+            <!-- Chamada para ação -->
             <div class="mb-8">
                 <h2 class="text-3xl md:text-4xl font-bold mb-3 display-font text-white">
-                    O que você vai querer hoje? 😋
+                    Faça seu pedido agora! 😋
                 </h2>
                 <p class="text-lg text-gray-300">
-                    Escolha sua categoria, role para baixo e monte seu pedido!
+                    Role para baixo e escolha seus lanches favoritos!
                 </p>
             </div>
-            
-            <!-- Botões Principais -->
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <button onclick="showSection('lanches')" class="btn-primary text-xl">
-                    <i class="fas fa-hotdog"></i> Cachorro Quente & Crepes
-                </button>
-                <button onclick="showSection('almoco')" class="btn-secondary text-xl">
-                    <i class="fas fa-drumstick-bite"></i> Almoço de Fim de Semana
-                </button>
-            </div>
-            
-            <p class="text-sm text-gray-400 mt-8">
-                <i class="fas fa-info-circle"></i> Almoço disponível apenas sábado e domingo (11:00 às 14:00) - Delivery ou Retirada<br>
-                <span class="text-orange-400">⚠️ Encomende com antecedência! Poucas unidades disponíveis para pedidos na hora.</span>
-            </p>
         </div>
     </section>
 
     <!-- Seção Lanches -->
-    <section id="lanches" class="hidden" style="background: var(--cor-preto); padding-top: 3rem;">
+    <section id="lanches" style="background: var(--cor-preto); padding-top: 3rem;">
         <div class="container mx-auto px-4">
             <h2 class="section-title">Cachorro Quente & Crepes</h2>
             <p class="text-center text-gray-300 mb-8 text-lg">
@@ -445,30 +430,6 @@
             </h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="bebidas-grid"></div>
-        </div>
-    </section>
-
-    <!-- Seção Almoço -->
-    <section id="almoco" class="hidden" style="background: var(--cor-preto); padding-top: 3rem;">
-        <div class="container mx-auto px-4">
-            <h2 class="section-title">Almoço de Fim de Semana</h2>
-            <p class="text-center text-gray-300 mb-4 text-lg">
-                Sábado e Domingo • 11:00 às 14:00
-            </p>
-            <p class="text-center text-orange-400 mb-8 font-semibold">
-                <i class="fas fa-motorcycle"></i> Delivery ou <i class="fas fa-shopping-bag"></i> Retirada
-            </p>
-            
-            <div class="bg-green-600 bg-opacity-20 border-2 border-green-500 rounded-2xl p-6 max-w-2xl mx-auto mb-12">
-                <p class="text-center text-lg">
-                    <i class="fas fa-heart"></i> Almoço caseiro preparado com carinho pela <strong>Rosane</strong>
-                </p>
-                <p class="text-center text-gray-300 mt-2 text-sm">
-                    Encomende com antecedência pelo WhatsApp!
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="almoco-grid"></div>
         </div>
     </section>
 
@@ -503,7 +464,6 @@
                     <option value="">Selecione...</option>
                     <option value="retirada">🛍️ Retirada no Local</option>
                     <option value="delivery">🏍️ Delivery</option>
-                    <option value="mesa">🍽️ Pedido na Mesa</option>
                 </select>
                 
                 <!-- Campos de Delivery -->
@@ -514,6 +474,7 @@
                     <label class="block text-sm font-semibold mb-2">Forma de Pagamento:</label>
                     <select id="payment-method" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" onchange="toggleTrocoField()">
                         <option value="">Selecione...</option>
+                        <option value="pix">💰 PIX</option>
                         <option value="cartao">💳 Cartão</option>
                         <option value="dinheiro">💵 Dinheiro</option>
                     </select>
@@ -522,15 +483,6 @@
                         <label class="block text-sm font-semibold mb-2">Troco para quanto?</label>
                         <input type="text" id="troco-value" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Ex: R$ 50,00">
                     </div>
-                </div>
-                
-                <!-- Campos de Mesa -->
-                <div id="mesa-fields" style="display: none;">
-                    <label class="block text-sm font-semibold mb-2">Número da Mesa:</label>
-                    <input type="text" id="mesa-number" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Ex: Mesa 5">
-                    
-                    <label class="block text-sm font-semibold mb-2">Nome (opcional):</label>
-                    <input type="text" id="mesa-name" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Seu nome...">
                 </div>
                 
                 <button onclick="sendOrder()" class="btn-primary w-full justify-center text-xl">
@@ -585,11 +537,6 @@
                 { id: 'fanta-350', nome: 'Fanta/Guaraná Antarctica', preco: 6.00, descricao: 'Fanta Laranja ou Guaraná Antarctica lata 350ml' },
                 { id: 'coca-600', nome: 'Coca-Cola 600ml', preco: 8.00, descricao: 'Coca-Cola garrafa 600ml' },
                 { id: 'coca-1l', nome: 'Coca-Cola 1 Litro', preco: 9.00, descricao: 'Coca-Cola garrafa 1 litro' }
-            ],
-            almoco: [
-                { id: 'frango-assado', nome: 'Frango Assado', preco: 0, descricao: 'Frango assado com arroz, feijão, salada e farofa' },
-                { id: 'carne-panela', nome: 'Carne de Panela', preco: 0, descricao: 'Carne de panela com arroz, feijão, salada e farofa' },
-                { id: 'peixe-frito', nome: 'Peixe Frito', preco: 0, descricao: 'Peixe frito com arroz, feijão, salada e farofa' }
             ]
         };
         
@@ -619,14 +566,6 @@
             produtos.bebidas.forEach(produto => {
                 const card = createProductCard(produto, false);
                 bebidasGrid.appendChild(card);
-            });
-            
-            // Almoço
-            const almocoGrid = document.getElementById('almoco-grid');
-            almocoGrid.innerHTML = '';
-            produtos.almoco.forEach(produto => {
-                const card = createProductCard(produto, true);
-                almocoGrid.appendChild(card);
             });
         }
         
@@ -882,25 +821,16 @@
         function toggleDeliveryFields() {
             const deliveryMethod = document.getElementById('delivery-method').value;
             const deliveryFields = document.getElementById('delivery-fields');
-            const mesaFields = document.getElementById('mesa-fields');
-            
-            // Esconder todos os campos primeiro
-            deliveryFields.style.display = 'none';
-            mesaFields.style.display = 'none';
             
             if (deliveryMethod === 'delivery') {
                 deliveryFields.style.display = 'block';
-            } else if (deliveryMethod === 'mesa') {
-                mesaFields.style.display = 'block';
             } else {
-                // Retirada - não precisa mostrar campos extras
-                // Limpar todos os campos
+                deliveryFields.style.display = 'none';
+                // Limpar campos
                 document.getElementById('delivery-address').value = '';
                 document.getElementById('payment-method').value = '';
                 document.getElementById('troco-value').value = '';
                 document.getElementById('troco-field').style.display = 'none';
-                document.getElementById('mesa-number').value = '';
-                document.getElementById('mesa-name').value = '';
             }
         }
         
@@ -950,16 +880,6 @@
                 }
             }
             
-            // Validações para mesa
-            if (deliveryMethod === 'mesa') {
-                const mesaNumber = document.getElementById('mesa-number').value.trim();
-                
-                if (!mesaNumber) {
-                    alert('Por favor, informe o número da mesa!');
-                    return;
-                }
-            }
-            
             if (cart.length === 0) {
                 alert('Seu carrinho está vazio!');
                 return;
@@ -1005,8 +925,7 @@
             // Delivery method
             const deliveryText = {
                 'retirada': 'Retirada no Local',
-                'delivery': 'Delivery',
-                'mesa': 'Pedido na Mesa'
+                'delivery': 'Delivery'
             };
             message += '*FORMA DE ENTREGA:* ' + deliveryText[deliveryMethod] + '\n';
             
@@ -1014,7 +933,10 @@
             if (deliveryMethod === 'delivery') {
                 const address = document.getElementById('delivery-address').value.trim();
                 const payment = document.getElementById('payment-method').value;
-                const paymentText = payment === 'cartao' ? 'Cartão' : 'Dinheiro';
+                
+                let paymentText = 'Dinheiro';
+                if (payment === 'cartao') paymentText = 'Cartão';
+                if (payment === 'pix') paymentText = 'PIX';
                 
                 message += `*ENDEREÇO:* ${address}\n`;
                 message += `*PAGAMENTO:* ${paymentText}\n`;
@@ -1022,14 +944,6 @@
                 if (payment === 'dinheiro') {
                     const troco = document.getElementById('troco-value').value.trim();
                     message += `*TROCO PARA:* ${troco}\n`;
-                }
-            } else if (deliveryMethod === 'mesa') {
-                const mesaNumber = document.getElementById('mesa-number').value.trim();
-                const mesaName = document.getElementById('mesa-name').value.trim();
-                
-                message += `*MESA:* ${mesaNumber}\n`;
-                if (mesaName) {
-                    message += `*NOME:* ${mesaName}\n`;
                 }
             } else {
                 message += '*RETIRAR EM:* Rua Cassilândia, 1068, Chapadão do Sul, MS\n';
@@ -1051,25 +965,6 @@
                     toggleCart();
                 }
             }, 1000);
-        }
-        
-        // Show section
-        function showSection(section) {
-            // Esconder todas as seções
-            document.getElementById('lanches').classList.add('hidden');
-            document.getElementById('almoco').classList.add('hidden');
-            
-            // Mostrar seção selecionada
-            if (section === 'lanches') {
-                document.getElementById('lanches').classList.remove('hidden');
-            } else {
-                document.getElementById('almoco').classList.remove('hidden');
-            }
-            
-            // Scroll suave para a seção
-            setTimeout(() => {
-                document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
-            }, 100);
         }
         
         // Initialize
