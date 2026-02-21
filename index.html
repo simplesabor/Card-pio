@@ -6,8 +6,7 @@
     
     <!-- SEO Meta Tags -->
     <title>Simplê Sabor - Feito com Carinho pela Rosane | Chapadão do Sul, MS</title>
-    <meta name="description" content="Lanches especiais e almoço caseiro preparados pela renomada Rosane. Terça a domingo, 17h-22h horário MS. Serve no local, delivery e retirada. Rua Cassilândia, 1068 - Chapadão do Sul, MS.">
-    
+    <meta name="description" content="Lanches especiais preparados pela Rosane. Terça a domingo, 19h às 23h30, horário de Brasília. Serve no local, delivery e retirada. Rua Cassilândia, 1068 - Chapadão do Sul, MS.">    
     <!-- Open Graph -->
     <meta property="og:title" content="Simplê Sabor - Feito com Carinho pela Rosane">
     <meta property="og:description" content="Lanches especiais toda noite e almoço caseiro no fim de semana. Delivery, retirada ou no local!">
@@ -571,8 +570,7 @@
                 
                 <div class="hidden md:flex flex-col items-center text-center" style="color: var(--cor-bege);">
                     <span class="text-xs">📍 Rua Cassilândia, 1068 - Chapadão do Sul, MS</span>
-                    <span class="text-xs mt-1">🕐 Terça a Domingo • 17:00 às 22:00 horário MS</span>
-                </div>
+                    <span class="text-xs mt-1">🕐 Terça a Domingo • 19:00 às 23:30 horário Brasília</span>                </div>
                 
                 <div class="flex gap-4 items-center">
                     <span id="header-status-badge" class="badge-highlight"></span>
@@ -626,9 +624,9 @@
             <div class="info-box rounded-2xl p-6 max-w-3xl mx-auto mb-8">
                 <p class="text-lg md:text-xl font-semibold mb-4 flex items-center justify-center gap-2">
                     <i class="far fa-clock text-orange-400"></i>
-                    <span>Terça a Domingo • 17:00 às 22:00</span>
+                    <span>Terça a Domingo • 19:00 às 23:30</span>
                 </p>
-                <p class="text-sm text-orange-300 mb-4">horário MS</p>
+                <p class="text-sm text-orange-300 mb-4">horário de Brasília</p>
                 
                 <!-- Ícones com destaque -->
                 <div class="flex flex-wrap gap-3 justify-center">
@@ -674,7 +672,7 @@
         <div class="container mx-auto px-4">
             <h2 class="section-title">Cachorro Quente & Crepes</h2>
             <p class="text-center text-gray-300 mb-8 text-lg">
-                Terça a Domingo • 17:00 às 22:00 horário MS | Serve no local, Delivery ou Retirada
+                Terça a Domingo • 19:00 às 23:30 horário de Brasília | Serve no local, Delivery ou Retirada
             </p>
             
             <!-- Cachorro Quente -->
@@ -1217,7 +1215,7 @@
             }
             
             message += '\n====================================\n';
-            message += '*HORÁRIO:* Terça a domingo, 17:00 às 22:00 horário MS';
+            message += '*HORÁRIO:* Terça a domingo, 19:00 às 23:30 horário de Brasília';
             
             // Encode and send
             const whatsappUrl = `https://wa.me/5567999496825?text=${encodeURIComponent(message)}`;
@@ -1238,82 +1236,100 @@
         renderProducts();
         updateCart();
         
-        // Função para atualizar os badges de status (aberto/fechado) - HORÁRIO MS
+        // Função para atualizar os badges de status (aberto/fechado), horário de Brasília
         function updateStatusBadge() {
             const heroStatus = document.getElementById('status-badge');
             const headerStatus = document.getElementById('header-status-badge');
             const now = new Date();
-            
-            // Converter para horário de Mato Grosso do Sul (UTC-4)
-            const msOffset = -4 * 60; // MS está em UTC-4
-            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-            const msTime = new Date(utc + (msOffset * 60000));
-            
-            const dayOfWeek = msTime.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
-            const hours = msTime.getHours();
-            const minutes = msTime.getMinutes();
-            const currentTime = hours + (minutes / 60);
-            
-            // Horários de funcionamento: Terça (2) a Domingo (0), 17:00 às 22:00
-            const openHour = 17;
-            const closeHour = 22;
-            
-            let badgeClass = '';
-            let heroText = '';
-            let headerText = '';
-            let isOpen = false;
-            
-            // Segunda-feira (1) = fechado
-            if (dayOfWeek === 1) {
-                badgeClass = 'badge-highlight badge-closed';
-                heroText = '🔴 Abrimos Terça às 17:00 MS';
-                isOpen = false;
-            }
-            // Terça a Domingo - ABERTO
-            else if (currentTime >= openHour && currentTime < closeHour) {
-                badgeClass = 'badge-highlight badge-open';
-                heroText = '🟢 Fecha às 22:00 MS';
-                isOpen = true;
-            }
-            // Fechado, mas abre hoje
-            else if (currentTime < openHour) {
-                badgeClass = 'badge-highlight badge-opens-soon';
-                heroText = '🟡 Abre às 17:00 MS';
-                isOpen = false;
-            }
-            // Fechado, abre amanhã
-            else {
-                // Se for domingo, abre terça
-                if (dayOfWeek === 0) {
-                    badgeClass = 'badge-highlight badge-closed';
-                    heroText = '🔴 Abrimos Terça às 17:00 MS';
-                    isOpen = false;
-                } else {
-                    badgeClass = 'badge-highlight badge-opens-soon';
-                    heroText = '🟡 Abre às 17:00 MS';
-                    isOpen = false;
-                }
-            }
-            
-            // Header badge: apenas ABERTO ou FECHADO
-            if (isOpen) {
-                headerText = '🟢 ABERTO';
-            } else {
-                headerText = '🔴 FECHADO';
-            }
-            
-            // Atualizar badge do hero
-            if (heroStatus) {
-                heroStatus.className = badgeClass;
-                heroStatus.innerHTML = heroText;
-            }
-            
-            // Atualizar badge do header (classe baseada em aberto/fechado)
-            if (headerStatus) {
-                headerStatus.className = isOpen ? 'badge-highlight badge-open' : 'badge-highlight badge-closed';
-                headerStatus.innerHTML = headerText;
-            }
-        }
+
+        // Horário de Brasília (America/Sao_Paulo)
+        const formatter = new Intl.DateTimeFormat('pt-BR', {
+            timeZone: 'America/Sao_Paulo',
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        });
+
+        const parts = formatter.formatToParts(now);
+        const hour = parseInt(parts.find(p => p.type === 'hour')?.value || '0', 10);
+        const minute = parseInt(parts.find(p => p.type === 'minute')?.value || '0', 10);
+
+        // Para dia da semana, melhor obter diretamente com weekday em formato numérico
+        const dayFormatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Sao_Paulo',
+            weekday: 'short'
+        });
+        const weekdayStr = dayFormatter.format(now);
+
+        // Mapeamento JS-like, 0=domingo, 1=segunda, ..., 6=sábado
+        const dayMap = {
+            Sun: 0,
+            Mon: 1,
+            Tue: 2,
+            Wed: 3,
+            Thu: 4,
+            Fri: 5,
+            Sat: 6
+        };
+        const dayOfWeek = dayMap[weekdayStr];
+
+        const currentMinutes = (hour * 60) + minute;
+
+      // Horários de funcionamento, Terça a Domingo, 19:00 às 23:30
+      const openMinutes = 19 * 60;        // 19:00
+      const closeMinutes = (23 * 60) + 30; // 23:30
+
+      let badgeClass = '';
+      let heroText = '';
+      let headerText = '';
+      let isOpen = false;
+
+      // Segunda-feira = fechado
+      if (dayOfWeek === 1) {
+         badgeClass = 'badge-highlight badge-closed';
+         heroText = '🔴 Abrimos Terça às 19:00';
+         isOpen = false;
+      }
+      // Terça a Domingo, aberto
+      else if (currentMinutes >= openMinutes && currentMinutes < closeMinutes) {
+          badgeClass = 'badge-highlight badge-open';
+          heroText = '🟢 Fecha às 23:30';
+          isOpen = true;
+      }
+      // Fechado, mas abre hoje
+      else if (currentMinutes < openMinutes) {
+          badgeClass = 'badge-highlight badge-opens-soon';
+          heroText = '🟡 Abre às 19:00';
+          isOpen = false;
+      }
+      // Fechado após horário
+      else {
+          // Domingo após fechar, próxima abertura é terça
+          if (dayOfWeek === 0) {
+              badgeClass = 'badge-highlight badge-closed';
+              heroText = '🔴 Abrimos Terça às 19:00';
+              isOpen = false;
+          } else {
+              badgeClass = 'badge-highlight badge-opens-soon';
+              heroText = '🟡 Abre às 19:00';
+              isOpen = false;
+          }
+      }
+
+      // Header badge, apenas ABERTO ou FECHADO
+      headerText = isOpen ? '🟢 ABERTO' : '🔴 FECHADO';
+
+      if (heroStatus) {
+          heroStatus.className = badgeClass;
+          heroStatus.innerHTML = heroText;
+      }
+
+      if (headerStatus) {
+          headerStatus.className = isOpen ? 'badge-highlight badge-open' : 'badge-highlight badge-closed';
+          headerStatus.innerHTML = headerText;
+      }
+}
         
         // Atualizar badges ao carregar a página
         updateStatusBadge();
