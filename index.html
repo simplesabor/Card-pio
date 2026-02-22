@@ -698,7 +698,7 @@
                     <input type="text" id="customer-name" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Seu nome completo">
                     
                     <label class="block text-sm font-semibold mb-2">Telefone:</label>
-                    <input type="tel" id="customer-phone" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="(67) 99999-9999">
+                    <input type="tel" id="customer-phone" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="(00) 00000-0000" maxlength="15" inputmode="numeric">
                     
                     <label class="block text-sm font-semibold mb-2">Endereço para Entrega:</label>
                     <input type="text" id="delivery-address" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Rua, número, bairro...">
@@ -768,7 +768,7 @@
                 { id: 'fanta-mini-220', nome: 'Fanta Mini 220ml', preco: 5.00, descricao: 'Fanta lata mini 220ml' },
                 { id: 'coca-350', nome: 'Coca-Cola/Zero 350ml', preco: 6.00, descricao: 'Coca-Cola ou Coca Zero lata 350ml' },
                 { id: 'fanta-350', nome: 'Fanta 350ml', preco: 6.00, descricao: 'Fanta Laranja lata 350ml' },
-                { id: 'Guaraná Antarctica', nome: 'Guaraná Antarctica 350ml', preco: 6.00, descricao: 'Guaraná Antarctica lata 350ml' },
+                { id: 'guarana-antarctica-350', nome: 'Guaraná Antarctica 350ml', preco: 6.00, descricao: 'Guaraná Antarctica lata 350ml' },
                 { id: 'coca-600', nome: 'Coca-Cola 600ml', preco: 8.00, descricao: 'Coca-Cola garrafa 600ml' },
                 { id: 'coca-1l', nome: 'Coca-Cola 1 Litro', preco: 9.00, descricao: 'Coca-Cola garrafa 1 litro (INDISPONÍVEL P/ DELIVERY)' }
             ]
@@ -779,6 +779,22 @@
         
         function formatBRL(value) {
             return `R$ ${Number(value).toFixed(2).replace('.', ',')}`;
+        }
+
+        function normalizePhoneDigits(value) {
+            return value.replace(/\D/g, '').slice(0, 11);
+        }
+
+        function formatPhoneBR(value) {
+            const digits = normalizePhoneDigits(value);
+            if (digits.length === 0) return '';
+            if (digits.length <= 2) return `(${digits}`;
+            if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+            return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+        }
+
+        function applyPhoneMask(input) {
+            input.value = formatPhoneBR(input.value);
         }
 
         function getSelectedDeliveryFee() {
@@ -1106,6 +1122,11 @@
                     alert('Por favor, informe seu telefone!');
                     return;
                 }
+
+                if (normalizePhoneDigits(customerPhone).length !== 11) {
+                    alert('Telefone inválido. Use o padrão (00) 00000-0000');
+                    return;
+                }
                 
                 if (!address) {
                     alert('Por favor, informe o endereço para entrega!');
@@ -1138,33 +1159,29 @@
             message += '*Feito pela Rosane com carinho!*\n\n';
             message += '====================================\n\n';
             
-            cart.forEach((item, index) => {
+            cart.forEach((item) => {
                 const qtd = Number(item.quantity || 1);
-                const precoBase = Number(item.precoBase ?? item.preco ?? 0);
                 const precoUnitFinal = Number(item.preco || 0);
                 const totalItem = precoUnitFinal * qtd;
 
-                message += `${index + 1}. *${item.nome}*\n`;
-                message += `   ${qtd}x ${formatBRL(precoBase)} (base)\n`;
+                message += `${qtd}x ${item.nome}  ${formatBRL(precoUnitFinal)}\n`;
 
                 if (item.adicionais && item.adicionais.length > 0) {
                     item.adicionais.forEach(nomeAdicional => {
                         const precoAd = getAdicionalPrecoByNome(nomeAdicional);
                         if (precoAd > 0) {
-                            message += `   + ${nomeAdicional}: ${formatBRL(precoAd)}\n`;
+                            message += `  + ${nomeAdicional} ${formatBRL(precoAd)}\n`;
                         } else {
-                            message += `   + ${nomeAdicional}\n`;
+                            message += `  + ${nomeAdicional}\n`;
                         }
                     });
                 }
 
-                message += `   *Total do item:* ${formatBRL(totalItem)}\n`;
-
                 if (item.obs) {
-                    message += `   Obs: ${item.obs}\n`;
+                    message += `  Obs: ${item.obs}\n`;
                 }
 
-                message += '\n';
+                message += `  Total item: ${formatBRL(totalItem)}\n\n`;
             });
             
             message += '====================================\n\n';
@@ -1321,6 +1338,14 @@
                 headerStatus.innerHTML = headerText;
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const phoneInput = document.getElementById('customer-phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', (e) => applyPhoneMask(e.target));
+                phoneInput.addEventListener('blur', (e) => applyPhoneMask(e.target));
+            }
+        });
         
         updateStatusBadge();
         setInterval(updateStatusBadge, 60000);
