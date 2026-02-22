@@ -6,7 +6,7 @@
     
     <!-- SEO Meta Tags -->
     <title>Simplê Sabor, Feito com Carinho pela Rosane | Chapadão do Sul, MS</title>
-    <meta name="description" content="Lanches especiais preparados pela Rosane. Terça a domingo, 19h às 23h30, horário de Brasília. Serve no local, delivery e retirada. Rua Cassilândia, 1068 , Chapadão do Sul, MS.">    
+    <meta name="description" content="Lanches especiais preparados pela Rosane. Terça a domingo, 19h às 23h30, horário de Brasília. Serve no local, delivery e retirada. Rua Cassilândia, 1068, Chapadão do Sul, MS.">    
     <!-- Open Graph -->
     <meta property="og:title" content="Simplê Sabor, Feito com Carinho pela Rosane">
     <meta property="og:description" content="Lanches especiais toda noite e almoço caseiro no fim de semana. Delivery, retirada ou no local!">
@@ -53,7 +53,6 @@
             font-weight: 700;
         }
         
-        /* Header fixo */
         .header-fixed {
             position: fixed;
             top: 0;
@@ -65,7 +64,6 @@
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
         
-        /* Hero section */
         .hero-section {
             min-height: 100vh;
             background: linear-gradient(to bottom,
@@ -533,7 +531,6 @@
 </head>
 <body>
 
-    <!-- Header Fixo -->
     <header class="header-fixed">
         <nav class="container mx-auto px-2 md:px-4 py-3">
             <div class="flex justify-between items-center">
@@ -545,7 +542,7 @@
                 </div>
                 
                 <div class="hidden md:flex flex-col items-center text-center" style="color: var(--cor-bege);">
-                    <span class="text-xs">📍 Rua Cassilândia, 1068 , Chapadão do Sul, MS</span>
+                    <span class="text-xs">📍 Rua Cassilândia, 1068, Chapadão do Sul, MS</span>
                     <span class="text-xs mt-1">🕐 Terça a Domingo • 19:00 às 23:30 horário Brasília</span>
                 </div>
                 
@@ -556,7 +553,6 @@
         </nav>
     </header>
 
-    <!-- Botão WhatsApp Flutuante -->
     <a href="https://wa.me/5567999496825?text=Olá!%20Quero%20fazer%20um%20pedido%20no%20Simplê%20Sabor!%20😋" 
        target="_blank" 
        class="whatsapp-float"
@@ -565,7 +561,6 @@
         <span class="whatsapp-text">Peça pelo WhatsApp!</span>
     </a>
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="container mx-auto px-4 text-center">
             <div class="logo-circle-container">
@@ -634,7 +629,6 @@
         </div>
     </section>
 
-    <!-- Seção Lanches -->
     <section id="lanches" style="background: var(--cor-preto); padding-top: 3rem;">
         <div class="container mx-auto px-4">
             <h2 class="section-title">Cachorro Quente & Crepes</h2>
@@ -662,13 +656,11 @@
         </div>
     </section>
 
-    <!-- Botão Carrinho Flutuante -->
     <button id="cart-button" class="btn-primary" onclick="toggleCart()" style="display: none;">
         <i class="fas fa-shopping-cart"></i>
         <span id="cart-count" class="cart-badge">0</span>
     </button>
 
-    <!-- Modal Carrinho -->
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <div class="flex justify-between items-center mb-6">
@@ -683,9 +675,19 @@
             <div id="cart-items" class="mb-6"></div>
             
             <div class="border-t border-gray-700 pt-6 mb-6">
-                <div class="flex justify-between text-2xl font-bold mb-4">
-                    <span>Total:</span>
-                    <span class="text-orange-500" id="cart-total">R$ 0,00</span>
+                <div class="mb-4 space-y-2">
+                    <div class="flex justify-between text-lg">
+                        <span>Subtotal:</span>
+                        <span id="cart-subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="flex justify-between text-lg">
+                        <span>Taxa de entrega:</span>
+                        <span id="cart-delivery-fee">R$ 0,00</span>
+                    </div>
+                    <div class="border-t border-gray-700 pt-2 flex justify-between text-2xl font-bold">
+                        <span>Total:</span>
+                        <span class="text-orange-500" id="cart-total">R$ 0,00</span>
+                    </div>
                 </div>
                 
                 <label class="block text-sm font-semibold mb-2">Forma de Entrega:</label>
@@ -695,7 +697,6 @@
                     <option value="delivery">🏍️ Delivery</option>
                 </select>
                 
-                <!-- Campos de Delivery -->
                 <div id="delivery-fields" style="display: none;">
                     <label class="block text-sm font-semibold mb-2">Nome:</label>
                     <input type="text" id="customer-name" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Seu nome">
@@ -732,6 +733,8 @@
     </div>
 
     <script>
+        const DELIVERY_FEE = 7.00;
+
         function getNextOrderNumber() {
             let orderNumber = localStorage.getItem('simplesabor_order_number');
             if (!orderNumber) {
@@ -765,6 +768,8 @@
             ],
             bebidas: [
                 { id: 'agua', nome: 'Água', preco: 4.00, descricao: 'Água mineral com ou sem gás' },
+                { id: 'coca-mini', nome: 'Coca-Cola Mini 220ml', preco: 5.00, descricao: 'Coca-Cola lata mini 220ml' },
+                { id: 'fanta-mini', nome: 'Fanta Mini 220ml', preco: 5.00, descricao: 'Fanta Laranja lata mini 220ml' },
                 { id: 'coca-350', nome: 'Coca-Cola/Zero 350ml', preco: 6.00, descricao: 'Coca-Cola ou Coca Zero lata 350ml' },
                 { id: 'fanta-350', nome: 'Fanta/Guaraná Antarctica', preco: 6.00, descricao: 'Fanta Laranja ou Guaraná Antarctica lata 350ml' },
                 { id: 'coca-600', nome: 'Coca-Cola 600ml', preco: 8.00, descricao: 'Coca-Cola garrafa 600ml' },
@@ -928,7 +933,6 @@
             });
             
             const quantity = parseInt(document.getElementById('modal-quantity').textContent, 10) || 1;
-            
             const total = (basePreco + adicionaisTotal) * quantity;
             totalEl.textContent = total.toFixed(2);
         }
@@ -965,9 +969,15 @@
         
         function updateCart() {
             const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const total = cart.reduce((sum, item) => sum + (item.preco * item.quantity), 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.preco * item.quantity), 0);
+
+            const deliveryMethod = document.getElementById('delivery-method')?.value || '';
+            const deliveryFee = deliveryMethod === 'delivery' ? DELIVERY_FEE : 0;
+            const total = subtotal + deliveryFee;
             
             document.getElementById('cart-count').textContent = count;
+            document.getElementById('cart-subtotal').textContent = `R$ ${subtotal.toFixed(2)}`;
+            document.getElementById('cart-delivery-fee').textContent = `R$ ${deliveryFee.toFixed(2)}`;
             document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`;
             
             const cartItems = document.getElementById('cart-items');
@@ -1064,6 +1074,8 @@
                 if (trocoValue) trocoValue.value = '';
                 if (trocoField) trocoField.style.display = 'none';
             }
+
+            updateCart();
         }
         
         function toggleTrocoField() {
@@ -1154,8 +1166,14 @@
             
             message += '====================================\n\n';
             
-            const total = cart.reduce((sum, item) => sum + (item.preco * item.quantity), 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.preco * item.quantity), 0);
+            const deliveryFee = deliveryMethod === 'delivery' ? DELIVERY_FEE : 0;
+            const total = subtotal + deliveryFee;
             const hasConsulta = cart.some(item => item.preco === 0);
+            
+            message += '*RESUMO DO PEDIDO*\n';
+            message += `Subtotal: R$ ${subtotal.toFixed(2)}\n`;
+            message += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n`;
             
             if (hasConsulta) {
                 message += '*TOTAL:* R$ ' + total.toFixed(2) + ' + itens a consultar\n\n';
@@ -1203,6 +1221,7 @@
                     cart = [];
                     updateCart();
                     document.getElementById('cart-button').style.display = 'none';
+                    
                     const cartModal = document.getElementById('cart-modal');
                     if (cartModal.classList.contains('active')) {
                         toggleCart();
@@ -1301,7 +1320,6 @@
         updateStatusBadge();
         setInterval(updateStatusBadge, 60000);
 
-        /* Máscara simples para telefone */
         document.addEventListener('input', function (e) {
             if (e.target && e.target.id === 'customer-phone') {
                 let v = e.target.value.replace(/\D/g, '').slice(0, 11);
