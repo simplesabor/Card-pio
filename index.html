@@ -807,6 +807,26 @@
         </div>
     </div>
 
+    <!-- Modal: Loja fechada -->
+    <div id="closed-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.92); z-index:3000; align-items:center; justify-content:center; padding:1rem;">
+        <div style="background:#2b2b2b; border-radius:24px; padding:2.5rem 2rem; max-width:400px; width:100%; border:1px solid rgba(239,68,68,0.4); box-shadow:0 20px 60px rgba(0,0,0,0.7); text-align:center;">
+            <div style="font-size:3.5rem; margin-bottom:1rem;">🔴</div>
+            <h3 style="font-family:'Sunflower',cursive; font-size:1.75rem; font-weight:700; color:#ef4444; margin-bottom:0.75rem;">Estamos Fechados</h3>
+            <p style="color:#d1d5db; margin-bottom:0.5rem;">No momento não estamos aceitando pedidos.</p>
+            <p style="color:#F98917; font-weight:700; font-size:1.05rem; margin-bottom:1.75rem;" id="closed-modal-next">Abrimos em breve às 19:00 🕖</p>
+            <a href="https://wa.me/5567999496825?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20o%20Simplê%20Sabor!"
+               target="_blank"
+               style="display:inline-flex; align-items:center; gap:0.6rem; background:linear-gradient(135deg,#25D366,#128C7E); color:white; padding:0.9rem 1.75rem; border-radius:50px; font-weight:700; font-size:1rem; text-decoration:none; margin-bottom:1rem; box-shadow:0 4px 15px rgba(37,211,102,0.35);">
+                <i class="fab fa-whatsapp" style="font-size:1.25rem;"></i> Tirar dúvidas no WhatsApp
+            </a>
+            <br>
+            <button onclick="document.getElementById('closed-modal').style.display='none'"
+                    style="background:transparent; border:1px solid #4b5563; color:#9ca3af; padding:0.6rem 1.5rem; border-radius:50px; cursor:pointer; font-size:0.9rem; margin-top:0.5rem;">
+                Fechar
+            </button>
+        </div>
+    </div>
+
     <!-- FIX #13: Modal customizado de confirmação (substitui confirm() nativo) -->
     <div id="confirm-modal">
         <div class="confirm-box">
@@ -957,6 +977,55 @@
             noBtn.onclick  = () => { cleanup(); if (onNo)  onNo();  };
         }
 
+        // ─── VERIFICAÇÃO SE LOJA ESTÁ FECHADA ───────────────────────────────────
+
+        function isStoreClosed() {
+            const now = new Date();
+
+            const dayFormatter = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'America/Sao_Paulo', weekday: 'short'
+            });
+            const dayStr = dayFormatter.format(now);
+            const dayMap = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
+            const dow    = dayMap[dayStr];
+
+            const timeFormatter = new Intl.DateTimeFormat('pt-BR', {
+                timeZone: 'America/Sao_Paulo',
+                hour: '2-digit', minute: '2-digit', hour12: false
+            });
+            const parts  = timeFormatter.formatToParts(now);
+            const hour   = parseInt(parts.find(p => p.type === 'hour')?.value   || '0', 10);
+            const minute = parseInt(parts.find(p => p.type === 'minute')?.value || '0', 10);
+            const totalMin = hour * 60 + minute;
+
+            const OPEN  = 19 * 60;
+            const CLOSE = 23 * 60 + 30;
+
+            if (dow === 1) return { closed: true, reason: 'segunda' };
+            if (totalMin >= CLOSE) return { closed: true, reason: dow === 0 ? 'domingo-pos' : 'pos-fechamento' };
+            if (totalMin < OPEN)  return { closed: true, reason: 'pre-abertura' };
+            return { closed: false };
+        }
+
+        function showClosedModal() {
+            const { closed, reason } = isStoreClosed();
+            if (!closed) return false;
+
+            const nextEl = document.getElementById('closed-modal-next');
+            if (nextEl) {
+                if (reason === 'segunda' || reason === 'domingo-pos') {
+                    nextEl.textContent = '📅 Voltamos na Terça às 19:00 🕖';
+                } else if (reason === 'pos-fechamento') {
+                    nextEl.textContent = '📅 Voltamos amanhã às 19:00 🕖';
+                } else {
+                    nextEl.textContent = '🕖 Abrimos hoje às 19:00!';
+                }
+            }
+
+            document.getElementById('closed-modal').style.display = 'flex';
+            return true;
+        }
+
         // ─── RENDERIZAÇÃO ────────────────────────────────────────────────────────
 
         function renderProducts() {
@@ -999,6 +1068,8 @@
         }
 
         function openAddModal(id, nome, preco, unavailableForDelivery) {
+            // Bloqueia se a loja estiver fechada
+            if (showClosedModal()) return;
             const isCachorroQuente = id.startsWith('dog-');
             currentModalBasePrice = Number(preco || 0);
 
