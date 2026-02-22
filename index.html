@@ -1320,7 +1320,7 @@
                     msg += `   Qtd: ${qty} x ${formatMoneyDot(precoBase)}\n`;
                     item.adicionais.forEach(n => {
                         const p = getAdicionalPrecoByNome(n);
-                        msg += `   + ${n}${p > 0 ? ': ' + formatMoneyDot(p) : ''}\n`;
+                        msg += `   +Adicionais: ${n}${p > 0 ? ' ' + formatMoneyDot(p) : ''}\n`;
                     });
                     if (item.obs) msg += `   Obs: ${item.obs}\n`;
                     msg += `   Subtotal: ${formatMoneyDot(totalItem)}\n\n`;
