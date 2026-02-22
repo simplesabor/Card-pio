@@ -1,1432 +1,1492 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Simplê Sabor — Feito com Carinho pela Rosane | Chapadão do Sul, MS</title>
+<meta name="description" content="Lanches especiais preparados pela Rosane. Terça a domingo, 19h às 23h30, horário de Brasília. Serve no local, delivery e retirada. Rua Cassilândia, 1068, Chapadão do Sul, MS.">
+
+<meta property="og:title" content="Simplê Sabor — Feito com Carinho pela Rosane">
+<meta property="og:description" content="Cachorro Quente & Crepes especiais toda noite. Delivery, retirada ou no local! Terça a Domingo, 19h às 23h30.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://simplesabor.github.io/assets/og-image.jpg">
+<meta property="og:url" content="https://simplesabor.github.io">
+
+<!-- FIX #10: Favicon -->
+<link rel="icon" href="assets/marca-dagua-transparente.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/marca-dagua-transparente.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Sunflower:wght@300;500;700&family=Roboto:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+<style>
+    :root {
+        --cor-grafite: #231F20;
+        --cor-preto: #231F20;
+        --cor-laranja: #F98917;
+        --cor-laranja-hover: #e07a10;
+        --cor-laranja-claro: #FFAD60;
+        --cor-bege: #f0d384;
+        --cor-cinza: #6b6b6b;
+        --cor-cinza-claro: #e5e5e5;
+    }
     
-    <title>Simplê Sabor , Feito com Carinho pela Rosane | Chapadão do Sul, MS</title>
-    <meta name="description" content="Lanches especiais preparados pela Rosane. Terça a domingo, 19h às 23h30, horário de Brasília. Serve no local, delivery e retirada. Rua Cassilândia, 1068 , Chapadão do Sul, MS.">
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
-    <meta property="og:title" content="Simplê Sabor , Feito com Carinho pela Rosane">
-    <meta property="og:description" content="Lanches especiais toda noite e almoço caseiro no fim de semana. Delivery, retirada ou no local!">
-    <meta property="og:type" content="website">
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--cor-grafite);
+        color: var(--cor-bege);
+        line-height: 1.6;
+    }
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    h1, h2, h3, .display-font {
+        font-family: 'Sunflower', cursive;
+        font-weight: 700;
+    }
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Sunflower:wght@300;500;700&family=Roboto:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    .header-fixed {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        background-color: #231F20;
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    .hero-section {
+        min-height: 100vh;
+        background: linear-gradient(to bottom,
+            rgba(35,31,32,0.4) 0%,
+            rgba(35,31,32,0.7) 50%,
+            #231F20 100%
+        ), url('assets/background-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        padding-top: 80px;
+        position: relative;
+    }
     
-    <style>
-        :root {
-            --cor-grafite: #231F20;
-            --cor-preto: #231F20;
-            --cor-laranja: #F98917;
-            --cor-laranja-hover: #e07a10;
-            --cor-laranja-claro: #FFAD60;
-            --cor-bege: #f0d384;
-            --cor-cinza: #6b6b6b;
-            --cor-cinza-claro: #e5e5e5;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--cor-grafite);
-            color: var(--cor-bege);
-            line-height: 1.6;
-        }
-        
-        h1, h2, h3, .display-font {
-            font-family: 'Sunflower', cursive;
-            font-weight: 700;
-        }
-        
-        .header-fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #231F20;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        }
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; left: 0; right: 0;
+        height: 150px;
+        background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(35,31,32,0.5) 20%,
+            rgba(35,31,32,0.85) 50%,
+            #231F20 100%);
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, var(--cor-laranja) 0%, #b84a2e 100%);
+        color: white;
+        padding: 1.25rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(217,104,70,0.3);
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(217,104,70,0.5);
+    }
+    
+    .btn-secondary {
+        background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        color: white;
+        padding: 1.25rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(46,204,113,0.3);
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+    }
+    
+    .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(46,204,113,0.5);
+    }
+    
+    .product-card {
+        background: rgba(43,43,43,0.8);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(217,104,70,0.2);
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--cor-laranja);
+    }
+
+    /* FIX #5: Badge de produto adicionado (toast) */
+    .product-card.added {
+        border-color: #10b981;
+        box-shadow: 0 0 0 2px rgba(16,185,129,0.4);
+    }
+    
+    #cart-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+    }
+    
+    .cart-badge {
+        position: absolute;
+        top: -8px; right: -8px;
+        background: #e74c3c;
+        color: white;
+        border-radius: 50%;
+        width: 24px; height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.9);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+    
+    .modal.active { display: flex; }
+    
+    .modal-content {
+        background: var(--cor-grafite);
+        border-radius: 20px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 2rem;
+        position: relative;
+    }
+    
+    section { padding: 5rem 1rem; }
+    
+    .section-title {
+        font-size: 3rem;
+        color: var(--cor-laranja);
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    @media (max-width: 768px) {
+        .section-title { font-size: 2.5rem; }
+        .btn-primary, .btn-secondary { padding: 1rem 1.5rem; font-size: 1rem; }
         
         .hero-section {
-            min-height: 100vh;
             background: linear-gradient(to bottom,
-                rgba(35, 31, 32, 0.4) 0%,
-                rgba(35, 31, 32, 0.7) 50%,
+                rgba(35,31,32,0.3) 0%,
+                rgba(35,31,32,0.6) 30%,
+                rgba(35,31,32,0.8) 60%,
+                rgba(35,31,32,0.95) 85%,
                 #231F20 100%
-            ),
-            url('assets/background-hero.jpg');
+            ), url('assets/background-hero-mobile.webp');
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            padding-bottom: 0px;
-            position: relative;
+            background-attachment: scroll;
         }
         
         .hero-section::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom,
-                transparent 0%,
-                rgba(35, 31, 32, 0.5) 20%,
-                rgba(35, 31, 32, 0.85) 50%,
-                #231F20 100%);
-            pointer-events: none;
-            z-index: 1;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent 0%, rgba(35,31,32,0.7) 40%, #231F20 100%);
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, var(--cor-laranja) 0%, #b84a2e 100%);
-            color: white;
-            padding: 1.25rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(217, 104, 70, 0.3);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(217, 104, 70, 0.5);
-        }
-        
-        .btn-secondary {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            color: white;
-            padding: 1.25rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-        
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
-        }
-        
-        .product-card {
-            background: rgba(43, 43, 43, 0.8);
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(217, 104, 70, 0.2);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--cor-laranja);
-        }
-        
-        #cart-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
-        }
-        
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #e74c3c;
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: var(--cor-grafite);
-            border-radius: 20px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 2rem;
-            position: relative;
-        }
-        
-        section {
-            padding: 5rem 1rem;
-        }
-        
-        .section-title {
-            font-size: 3rem;
-            color: var(--cor-laranja);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .btn-primary, .btn-secondary {
-                padding: 1rem 1.5rem;
-                font-size: 1rem;
-            }
-            
-            .hero-section-mobile {
-                background: linear-gradient(to bottom,
-                    rgba(35, 31, 32, 0.3) 0%,
-                    rgba(35, 31, 32, 0.6) 30%,
-                    rgba(35, 31, 32, 0.8) 60%,
-                    rgba(35, 31, 32, 0.95) 85%,
-                    #231F20 100%
-                ),
-                url('assets/background-hero-mobile.webp'); /* Caminho da imagem corrigido */
-                background-size: cover;
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-attachment: scroll;
-                min-height: 100vh;
-                padding-bottom: 0px;
-            }
-            
-            .hero-section::before {
-                display: none;
-            }
-            
-            .hero-section::after {
-                height: 80px;
-                background: linear-gradient(to bottom,
-                    transparent 0%,
-                    rgba(35, 31, 32, 0.7) 40%,
-                    #231F20 100%);
-            }
-            
-            .hero-section > .container {
-                position: relative;
-                z-index: 2;
-            }
-            
-            .logo-circle-container {
-                width: 280px;
-                height: 280px;
-            }
-            
-            .logo-center {
-                width: 180px;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .hero-section {
-                background-attachment: fixed;
-            }
-        }
-        
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .quantity-control button {
-            background: var(--cor-laranja);
-            color: white;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .quantity-control button:hover {
-            background: var(--cor-laranja-hover);
-            transform: scale(1.1);
-        }
-        
-        .quantity-control span {
-            font-size: 1.25rem;
-            font-weight: 700;
-            min-width: 40px;
-            text-align: center;
-        }
-        
-        .logo-circle-container {
-            position: relative;
-            width: 340px;
-            height: 340px;
-            margin: 0 auto 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-        
-        @media (min-width: 768px) {
-            .logo-circle-container {
-                width: 450px;
-                height: 450px;
-            }
-        }
-        
-        .circular-text {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            animation: rotate 30s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .circular-text text {
-            font-family: 'Sunflower', cursive;
-            font-size: 11px;
-            font-weight: 600;
-            fill: var(--cor-laranja);
-            letter-spacing: 2px;
-        }
-        
-        @media (min-width: 768px) {
-            .circular-text text {
-                font-size: 13px;
-                letter-spacing: 3px;
-            }
-        }
-        
-        .logo-center {
-            position: relative;
-            width: 220px;
-            height: auto;
-            z-index: 10;
-        }
-        
-        @media (min-width: 768px) {
-            .logo-center {
-                width: 300px;
-            }
-        }
-        
-        .hero-title {
-            font-family: 'Pacifico', cursive !important;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9),
-                         2px 2px 4px rgba(0, 0, 0, 0.7),
-                         0 0 30px rgba(249, 137, 23, 0.4);
-        }
-        
-        h1, h2, .display-font {
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
-                         1px 1px 2px rgba(0, 0, 0, 0.6);
-        }
-        
-        .info-box {
-            background: linear-gradient(135deg, rgba(249, 137, 23, 0.08) 0%, rgba(184, 74, 46, 0.08) 100%);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(249, 137, 23, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        }
-        
-        .icon-highlight {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 50px;
-            border: 1px solid rgba(249, 137, 23, 0.25);
-            transition: all 0.3s ease;
-        }
-        
-        .icon-highlight:hover {
-            background: rgba(249, 137, 23, 0.08);
-            border-color: rgba(249, 137, 23, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .decorative-divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #F98917, transparent);
-            margin: 1rem auto;
-        }
-        
-        .badge-highlight {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            color: white;
-            font-weight: 700;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        
-        .badge-open {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .badge-closed {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-        }
-        
-        .badge-opens-soon {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            left: 20px;
-            z-index: 1000;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6),
-                        0 0 0 0 rgba(37, 211, 102, 0.7);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            animation: whatsapp-pulse 2s infinite;
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 40px rgba(37, 211, 102, 0.8);
-        }
-        
-        @keyframes whatsapp-pulse {
-            0% {
-                box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6),
-                            0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            50% {
-                box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6),
-                            0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6),
-                            0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-        
-        .whatsapp-text {
-            position: absolute;
-            right: 75px;
-            background: white;
-            color: #128C7E;
-            padding: 0.75rem 1.25rem;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .whatsapp-float:hover .whatsapp-text {
-            opacity: 1;
-            visibility: visible;
-            right: 80px;
-        }
-        
-        @media (max-width: 768px) {
-            .whatsapp-float {
-                width: 60px;
-                height: 60px;
-                bottom: 20px;
-                left: 15px;
-                font-size: 1.75rem;
-            }
-            
-            .whatsapp-text {
-                display: none;
-            }
-        }
-    </style>
+        .logo-circle-container { width: 280px; height: 280px; }
+        .logo-center { width: 180px; }
+    }
+    
+    @media (min-width: 769px) {
+        .hero-section { background-attachment: fixed; }
+    }
+    
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .quantity-control button {
+        background: var(--cor-laranja);
+        color: white;
+        border: none;
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .quantity-control button:hover {
+        background: var(--cor-laranja-hover);
+        transform: scale(1.1);
+    }
+    
+    .quantity-control span {
+        font-size: 1.25rem;
+        font-weight: 700;
+        min-width: 40px;
+        text-align: center;
+    }
+    
+    .logo-circle-container {
+        position: relative;
+        width: 340px; height: 340px;
+        margin: 0 auto 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+    
+    @media (min-width: 768px) {
+        .logo-circle-container { width: 450px; height: 450px; }
+    }
+    
+    .circular-text {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        animation: rotate 30s linear infinite;
+    }
+    
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .circular-text text {
+        font-family: 'Sunflower', cursive;
+        font-size: 11px;
+        font-weight: 600;
+        fill: var(--cor-laranja);
+        letter-spacing: 2px;
+    }
+    
+    @media (min-width: 768px) {
+        .circular-text text { font-size: 13px; letter-spacing: 3px; }
+    }
+    
+    .logo-center {
+        position: relative;
+        width: 220px;
+        height: auto;
+        z-index: 10;
+    }
+    
+    @media (min-width: 768px) {
+        .logo-center { width: 300px; }
+    }
+    
+    .hero-title {
+        font-family: 'Pacifico', cursive !important;
+        text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 2px 2px 4px rgba(0,0,0,0.7), 0 0 30px rgba(249,137,23,0.4);
+    }
+    
+    h1, h2, .display-font {
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.6);
+    }
+    
+    .info-box {
+        background: linear-gradient(135deg, rgba(249,137,23,0.08) 0%, rgba(184,74,46,0.08) 100%);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(249,137,23,0.3);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    
+    .icon-highlight {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        background: rgba(255,255,255,0.03);
+        border-radius: 50px;
+        border: 1px solid rgba(249,137,23,0.25);
+        transition: all 0.3s ease;
+    }
+    
+    .icon-highlight:hover {
+        background: rgba(249,137,23,0.08);
+        border-color: rgba(249,137,23,0.4);
+        transform: translateY(-2px);
+    }
+    
+    .decorative-divider {
+        width: 60px; height: 3px;
+        background: linear-gradient(90deg, transparent, #F98917, transparent);
+        margin: 1rem auto;
+    }
+    
+    .badge-highlight {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        color: white;
+        font-weight: 700;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    
+    .badge-open {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        box-shadow: 0 4px 15px rgba(16,185,129,0.4);
+        animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .badge-closed {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+    }
+    
+    .badge-opens-soon {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        box-shadow: 0 4px 15px rgba(245,158,11,0.4);
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    
+    .whatsapp-float {
+        position: fixed;
+        bottom: 25px; left: 20px;
+        z-index: 1000;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        color: white;
+        width: 65px; height: 65px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        box-shadow: 0 6px 30px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0.7);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+        animation: whatsapp-pulse 2s infinite;
+    }
+    
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 40px rgba(37,211,102,0.8);
+    }
+    
+    @keyframes whatsapp-pulse {
+        0% { box-shadow: 0 6px 30px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0.7); }
+        50% { box-shadow: 0 6px 30px rgba(37,211,102,0.6), 0 0 0 15px rgba(37,211,102,0); }
+        100% { box-shadow: 0 6px 30px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0); }
+    }
+    
+    .whatsapp-text {
+        position: absolute;
+        right: 75px;
+        background: white;
+        color: #128C7E;
+        padding: 0.75rem 1.25rem;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        white-space: nowrap;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .whatsapp-float:hover .whatsapp-text {
+        opacity: 1;
+        visibility: visible;
+        right: 80px;
+    }
+    
+    @media (max-width: 768px) {
+        .whatsapp-float { width: 60px; height: 60px; bottom: 20px; left: 15px; font-size: 1.75rem; }
+        .whatsapp-text { display: none; }
+    }
+
+    /* FIX #5: Toast de item adicionado */
+    #toast {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 0.85rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        z-index: 3000;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 6px 20px rgba(16,185,129,0.4);
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+    }
+
+    #toast.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* FIX #4: Badge indisponível */
+    .badge-unavailable-delivery {
+        display: inline-block;
+        background: rgba(239,68,68,0.15);
+        border: 1px solid rgba(239,68,68,0.4);
+        color: #fca5a5;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
+        margin-top: 0.25rem;
+    }
+
+    /* FIX #3: Preço único no modal (sem redundância) */
+    .modal-price-display {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--cor-laranja);
+        margin-bottom: 1.25rem;
+    }
+
+    /* Modal customizado de confirmação (FIX #13) */
+    #confirm-modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.85);
+        z-index: 3000;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    #confirm-modal.active { display: flex; }
+
+    #confirm-modal .confirm-box {
+        background: #2b2b2b;
+        border-radius: 20px;
+        padding: 2rem;
+        max-width: 380px;
+        width: 100%;
+        border: 1px solid rgba(249,137,23,0.3);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        text-align: center;
+    }
+
+    /* FIX #6: Fechar carrinho quando limpa e está vazio */
+    .form-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--cor-laranja-claro);
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        background: #1a1a1a;
+        color: white;
+        border: 1px solid #374151;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--cor-laranja);
+    }
+
+    .form-select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        background: #1a1a1a;
+        color: white;
+        border: 1px solid #374151;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: border-color 0.2s;
+    }
+
+    .form-select:focus {
+        outline: none;
+        border-color: var(--cor-laranja);
+    }
+
+    /* Google Maps link */
+    .maps-link {
+        color: var(--cor-laranja);
+        text-decoration: underline;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+
+    .maps-link:hover { color: var(--cor-laranja-claro); }
+
+    /* Scrollbar customizada */
+    .modal-content::-webkit-scrollbar { width: 6px; }
+    .modal-content::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 3px; }
+    .modal-content::-webkit-scrollbar-thumb { background: var(--cor-laranja); border-radius: 3px; }
+</style>
+```
+
 </head>
 <body>
 
-    <header class="header-fixed">
-        <nav class="container mx-auto px-2 md:px-4 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <img src="assets/marca-dagua-transparente.png" alt="Simplê Sabor Ícone" class="h-9 md:h-11">
-                    <span style="font-family: 'Lily Script One', cursive; font-size: 1.5rem;">
-                        <span style="color: var(--cor-laranja);">Simplê</span><span style="color: var(--cor-bege);"> Sabor</span>
-                    </span>
-                </div>
-                
-                <div class="hidden md:flex flex-col items-center text-center" style="color: var(--cor-bege);">
-                    <span class="text-xs">📍 Rua Cassilândia, 1068 , Chapadão do Sul, MS</span>
-                    <span class="text-xs mt-1">🕐 Terça a Domingo • 19:00 às 23:30 horário Brasília</span>
-                </div>
-                
-                <div class="flex gap-4 items-center">
-                    <span id="header-status-badge" class="badge-highlight"></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <a href="https://wa.me/5567999496825?text=Olá!%20Quero%20fazer%20um%20pedido%20no%20Simplê%20Sabor!%20😋"
-       target="_blank"
-       class="whatsapp-float"
-       title="Chamar no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-text">Peça pelo WhatsApp!</span>
-    </a>
-
-    <section class="hero-section">
-        <div class="container mx-auto px-4 text-center">
-            <div class="logo-circle-container">
-                <svg class="circular-text" viewBox="0 0 200 200">
-                    <defs>
-                        <path id="circlePath" d="M 100, 100 m -74, 0 a 74,74 0 1,1 148,0 a 74,74 0 1,1 -148,0"/>
-                    </defs>
-                    <text style="font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #F98917; letter-spacing: 3px; text-transform: uppercase;">
-                        <textPath href="#circlePath" startOffset="0%">
-                            SIMPLE SABOR • DO SIMPLES AO EXTRAORDINARIO •
-                        </textPath>
-                    </text>
-                </svg>
-                <img src="assets/logo-hero-transparente.png" alt="Simplê Sabor Logo" class="logo-center">
+```
+<!-- HEADER -->
+<header class="header-fixed">
+    <nav class="container mx-auto px-2 md:px-4 py-3">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="assets/marca-dagua-transparente.png" alt="Simplê Sabor Ícone" class="h-9 md:h-11">
+                <span style="font-family: 'Lily Script One', cursive; font-size: 1.5rem;">
+                    <span style="color: var(--cor-laranja);">Simplê</span><span style="color: var(--cor-bege);"> Sabor</span>
+                </span>
             </div>
             
-            <h1 class="hero-title text-5xl md:text-7xl mb-6 leading-tight">
-                Feito com <span class="text-orange-500">Carinho</span><br>pela Rosane
-            </h1>
-            
-            <div class="mb-6">
-                <span id="status-badge" class="badge-highlight"></span>
+            <div class="hidden md:flex flex-col items-center text-center" style="color: var(--cor-bege);">
+                <a href="https://maps.google.com/?q=Rua+Cassilândia,+1068,+Chapadão+do+Sul,+MS" target="_blank" class="maps-link text-xs">
+                    📍 Rua Cassilândia, 1068 — Chapadão do Sul, MS
+                </a>
+                <span class="text-xs mt-1">🕐 Terça a Domingo • 19:00 às 23:30 horário Brasília</span>
             </div>
             
-            <div class="decorative-divider"></div>
-            
-            <div class="info-box rounded-2xl p-6 max-w-3xl mx-auto mb-8">
-                <p class="text-lg md:text-xl font-semibold mb-4 flex items-center justify-center gap-2">
-                    <i class="far fa-clock text-orange-400"></i>
-                    <span>Terça a Domingo • 19:00 às 23:30</span>
-                </p>
-                <p class="text-sm text-orange-300 mb-4">horário de Brasília</p>
-                
-                <div class="flex flex-wrap gap-3 justify-center">
-                    <span class="icon-highlight">
-                        <i class="fas fa-utensils text-orange-400"></i>
-                        <span class="text-sm">Serve no Local</span>
-                    </span>
-                    <span class="icon-highlight">
-                        <i class="fas fa-motorcycle text-orange-400"></i>
-                        <span class="text-sm">Delivery</span>
-                    </span>
-                    <span class="icon-highlight">
-                        <i class="fas fa-shopping-bag text-orange-400"></i>
-                        <span class="text-sm">Retirada</span>
-                    </span>
-                </div>
-            </div>
-            
-            <p class="text-lg mb-8 flex items-center justify-center gap-2">
-                <i class="fas fa-map-marker-alt text-orange-400"></i>
-                <span class="text-orange-400 font-semibold">Rua Cassilândia, 1068</span>
-            </p>
-            <p class="text-sm text-gray-400 mb-12">Chapadão do Sul, MS</p>
-            
-            <div class="decorative-divider mb-8"></div>
-            
-            <div class="mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold mb-3 display-font text-white">
-                    Faça seu pedido agora! 😋
-                </h2>
-                <p class="text-lg text-gray-300">
-                    Role para baixo e escolha seus lanches favoritos!
-                </p>
+            <div class="flex gap-4 items-center">
+                <span id="header-status-badge" class="badge-highlight"></span>
             </div>
         </div>
-    </section>
+    </nav>
+</header>
 
-    <section id="lanches" style="background: var(--cor-preto); padding-top: 3rem;">
-        <div class="container mx-auto px-4">
-            <h2 class="section-title">Cachorro Quente & Crepes</h2>
-            <p class="text-center text-gray-300 mb-8 text-lg">
-                Terça a Domingo • 19:00 às 23:30 horário de Brasília | Serve no local, Delivery ou Retirada
-            </p>
-            
-            <h3 class="text-3xl font-bold text-orange-500 mb-6 text-center">
-                <i class="fas fa-hotdog"></i> Cachorro Quente Prensado
-            </h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12" id="lanches-grid"></div>
-            
-            <h3 class="text-3xl font-bold text-green-400 mb-6 text-center">
-                <i class="fas fa-pizza-slice"></i> Crepes Abertos
-            </h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12" id="crepes-grid"></div>
-            
-            <h3 class="text-3xl font-bold text-blue-400 mb-6 text-center">
-                <i class="fas fa-glass-water"></i> Bebidas
-            </h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="bebidas-grid"></div>
+<!-- WhatsApp flutuante -->
+<a href="https://wa.me/5567999496825?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20no%20Simplê%20Sabor!%20😋"
+   target="_blank"
+   class="whatsapp-float"
+   title="Chamar no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-text">Peça pelo WhatsApp!</span>
+</a>
+
+<!-- Toast de item adicionado (FIX #5) -->
+<div id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-text">Item adicionado!</span>
+</div>
+
+<!-- HERO -->
+<section class="hero-section">
+    <div class="container mx-auto px-4 text-center" style="position: relative; z-index: 2;">
+        <div class="logo-circle-container">
+            <svg class="circular-text" viewBox="0 0 200 200">
+                <defs>
+                    <path id="circlePath" d="M 100, 100 m -74, 0 a 74,74 0 1,1 148,0 a 74,74 0 1,1 -148,0"/>
+                </defs>
+                <text style="font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #F98917; letter-spacing: 3px;">
+                    <textPath href="#circlePath" startOffset="0%">
+                        SIMPLE SABOR • DO SIMPLES AO EXTRAORDINARIO •
+                    </textPath>
+                </text>
+            </svg>
+            <img src="assets/logo-hero-transparente.png" alt="Simplê Sabor Logo" class="logo-center">
         </div>
-    </section>
+        
+        <h1 class="hero-title text-5xl md:text-7xl mb-6 leading-tight">
+            Feito com <span class="text-orange-500">Carinho</span><br>pela Rosane
+        </h1>
+        
+        <div class="mb-6">
+            <span id="status-badge" class="badge-highlight"></span>
+        </div>
+        
+        <div class="decorative-divider"></div>
+        
+        <div class="info-box rounded-2xl p-6 max-w-3xl mx-auto mb-8">
+            <p class="text-lg md:text-xl font-semibold mb-4 flex items-center justify-center gap-2">
+                <i class="far fa-clock text-orange-400"></i>
+                <span>Terça a Domingo • 19:00 às 23:30</span>
+            </p>
+            <p class="text-sm text-orange-300 mb-4">horário de Brasília</p>
+            
+            <div class="flex flex-wrap gap-3 justify-center">
+                <span class="icon-highlight">
+                    <i class="fas fa-utensils text-orange-400"></i>
+                    <span class="text-sm">Serve no Local</span>
+                </span>
+                <span class="icon-highlight">
+                    <i class="fas fa-motorcycle text-orange-400"></i>
+                    <span class="text-sm">Delivery</span>
+                </span>
+                <span class="icon-highlight">
+                    <i class="fas fa-shopping-bag text-orange-400"></i>
+                    <span class="text-sm">Retirada</span>
+                </span>
+            </div>
+        </div>
+        
+        <!-- FIX #13: Link do Google Maps no endereço -->
+        <p class="text-lg mb-2 flex items-center justify-center gap-2">
+            <i class="fas fa-map-marker-alt text-orange-400"></i>
+            <a href="https://maps.google.com/?q=Rua+Cassilândia,+1068,+Chapadão+do+Sul,+MS"
+               target="_blank"
+               class="maps-link">
+                Rua Cassilândia, 1068
+            </a>
+        </p>
+        <p class="text-sm text-gray-400 mb-12">Chapadão do Sul, MS</p>
+        
+        <div class="decorative-divider mb-8"></div>
+        
+        <div class="mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold mb-3 display-font text-white">
+                Faça seu pedido agora! 😋
+            </h2>
+            <p class="text-lg text-gray-300">
+                Role para baixo e escolha seus lanches favoritos!
+            </p>
+        </div>
+    </div>
+</section>
 
-    <button id="cart-button" class="btn-primary" onclick="toggleCart()" style="display: none;">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="cart-count" class="cart-badge">0</span>
-    </button>
+<!-- CARDÁPIO -->
+<section id="lanches" style="background: var(--cor-preto); padding-top: 3rem;">
+    <div class="container mx-auto px-4">
+        <h2 class="section-title">Cachorro Quente & Crepes</h2>
+        <p class="text-center text-gray-300 mb-8 text-lg">
+            Terça a Domingo • 19:00 às 23:30 horário de Brasília | Serve no local, Delivery ou Retirada
+        </p>
+        
+        <h3 class="text-3xl font-bold text-orange-500 mb-6 text-center">
+            <i class="fas fa-hotdog"></i> Cachorro Quente Prensado
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12" id="lanches-grid"></div>
+        
+        <h3 class="text-3xl font-bold text-green-400 mb-6 text-center">
+            <i class="fas fa-pizza-slice"></i> Crepes Abertos
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12" id="crepes-grid"></div>
+        
+        <h3 class="text-3xl font-bold text-blue-400 mb-6 text-center">
+            <i class="fas fa-glass-water"></i> Bebidas
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="bebidas-grid"></div>
+    </div>
+</section>
 
-    <div id="cart-modal" class="modal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-bold text-orange-500">
-                    <i class="fas fa-shopping-cart"></i> Seu Pedido
-                </h2>
-                <button onclick="toggleCart()" class="text-gray-400 hover:text-white text-3xl" aria-label="Fechar carrinho">
-                    <i class="fas fa-times"></i>
-                </button>
+<!-- Botão flutuante do carrinho -->
+<button id="cart-button" class="btn-primary" onclick="toggleCart()" style="display: none;">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="cart-count" class="cart-badge">0</span>
+</button>
+
+<!-- MODAL DO CARRINHO -->
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-orange-500">
+                <i class="fas fa-shopping-cart"></i> Seu Pedido
+            </h2>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-white text-3xl" aria-label="Fechar carrinho">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div id="cart-items" class="mb-6"></div>
+        
+        <div class="border-t border-gray-700 pt-6 mb-6">
+            <div class="space-y-2 mb-4 text-lg">
+                <div class="flex justify-between">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Taxa de entrega:</span>
+                    <span id="cart-delivery-fee">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between text-2xl font-bold border-t border-gray-700 pt-3">
+                    <span>Total:</span>
+                    <span class="text-orange-500" id="cart-total">R$ 0,00</span>
+                </div>
             </div>
             
-            <div id="cart-items" class="mb-6"></div>
-            
-            <div class="border-t border-gray-700 pt-6 mb-6">
-                <div class="space-y-2 mb-4 text-lg">
-                    <div class="flex justify-between">
-                        <span>Subtotal:</span>
-                        <span id="cart-subtotal">R$ 0,00</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span>Taxa de entrega:</span>
-                        <span id="cart-delivery-fee">R$ 0,00</span>
-                    </div>
-                    <div class="flex justify-between text-2xl font-bold border-t border-gray-700 pt-3">
-                        <span>Total:</span>
-                        <span class="text-orange-500" id="cart-total">R$ 0,00</span>
-                    </div>
-                </div>
+            <!-- Forma de entrega -->
+            <label class="form-label">Forma de Entrega:</label>
+            <select id="delivery-method" class="form-select" onchange="toggleDeliveryFields(); updateCart();">
+                <option value="">Selecione...</option>
+                <option value="retirada">🛍️ Retirada no Local</option>
+                <option value="delivery">🏍️ Delivery</option>
+            </select>
+
+            <!-- FIX #2 e #12: Campos comuns para TODOS (retirada e delivery) -->
+            <div id="common-fields" style="display: none;">
+                <label class="form-label">Nome:</label>
+                <input type="text" id="customer-name" class="form-input" placeholder="Seu nome completo">
                 
-                <label class="block text-sm font-semibold mb-2">Forma de Entrega:</label>
-                <select id="delivery-method" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-4" onchange="toggleDeliveryFields(); updateCart();">
+                <label class="form-label">Telefone:</label>
+                <input type="tel" id="customer-phone" class="form-input" placeholder="(67) 99999-9999" maxlength="15" inputmode="numeric">
+
+                <!-- FIX #12: Pagamento também para retirada -->
+                <label class="form-label">Forma de Pagamento:</label>
+                <select id="payment-method" class="form-select" onchange="toggleTrocoField()">
                     <option value="">Selecione...</option>
-                    <option value="retirada">🛍️ Retirada no Local</option>
-                    <option value="delivery">🏍️ Delivery</option>
+                    <option value="pix">💰 PIX</option>
+                    <option value="cartao">💳 Cartão</option>
+                    <option value="dinheiro">💵 Dinheiro</option>
                 </select>
                 
-                <div id="delivery-fields" style="display: none;">
-                    <label class="block text-sm font-semibold mb-2">Nome:</label>
-                    <input type="text" id="customer-name" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Seu nome completo">
-                    
-                    <label class="block text-sm font-semibold mb-2">Telefone:</label>
-                    <input type="tel" id="customer-phone" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="(00) 00000-0000" maxlength="15" inputmode="numeric">
-                    
-                    <label class="block text-sm font-semibold mb-2">Endereço para Entrega:</label>
-                    <input type="text" id="delivery-address" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Rua, número, bairro...">
-                    
-                    <label class="block text-sm font-semibold mb-2">Forma de Pagamento:</label>
-                    <select id="payment-method" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" onchange="toggleTrocoField()">
-                        <option value="">Selecione...</option>
-                        <option value="pix">💰 PIX</option>
-                        <option value="cartao">💳 Cartão</option>
-                        <option value="dinheiro">💵 Dinheiro</option>
-                    </select>
-                    
-                    <div id="troco-field" style="display: none;">
-                        <label class="block text-sm font-semibold mb-2">Troco para quanto?</label>
-                        <input type="text" id="troco-value" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Ex: 170 (Ou digite 'Sem troco')">
-                    </div>
+                <div id="troco-field" style="display: none;">
+                    <label class="form-label">Troco para quanto?</label>
+                    <input type="text" id="troco-value" class="form-input" placeholder="Ex: R$ 50 (ou 'Sem troco')">
                 </div>
-                
-                <button onclick="sendOrder()" class="btn-primary w-full justify-center text-xl">
-                    <i class="fab fa-whatsapp"></i> Enviar Pedido via WhatsApp
-                </button>
+            </div>
+
+            <!-- Campos exclusivos de Delivery -->
+            <div id="delivery-fields" style="display: none;">
+                <label class="form-label">Endereço para Entrega:</label>
+                <input type="text" id="delivery-address" class="form-input" placeholder="Rua, número, bairro...">
             </div>
             
-            <button onclick="clearCart()" class="text-red-500 hover:text-red-400 w-full text-center">
-                <i class="fas fa-trash"></i> Limpar Carrinho
+            <button onclick="sendOrder()" class="btn-primary w-full justify-center text-xl mt-4">
+                <i class="fab fa-whatsapp"></i> Enviar Pedido via WhatsApp
+            </button>
+        </div>
+        
+        <button onclick="clearCart()" class="text-red-500 hover:text-red-400 w-full text-center py-2">
+            <i class="fas fa-trash"></i> Limpar Carrinho
+        </button>
+    </div>
+</div>
+
+<!-- FIX #13: Modal customizado de confirmação (substitui confirm() nativo) -->
+<div id="confirm-modal">
+    <div class="confirm-box">
+        <div class="text-4xl mb-4">🎉</div>
+        <h3 class="text-xl font-bold text-orange-500 mb-2">Pedido enviado!</h3>
+        <p class="text-gray-300 mb-6" id="confirm-message">Deseja limpar o carrinho?</p>
+        <div class="flex gap-3 justify-center">
+            <button id="confirm-yes" class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 1rem;">
+                <i class="fas fa-check"></i> Sim, limpar
+            </button>
+            <button id="confirm-no" class="btn-secondary" style="padding: 0.75rem 1.5rem; font-size: 1rem;">
+                <i class="fas fa-times"></i> Não
             </button>
         </div>
     </div>
+</div>
 
-    <script>
-        const DELIVERY_FEE = 7.00;
+<script>
+    const DELIVERY_FEE = 7.00;
 
-        const adicionais = [
-            { id: 'bacon', nome: 'Bacon', preco: 3.00 },
-            { id: 'calabresa', nome: 'Calabresa', preco: 3.00 },
-            { id: 'salada', nome: 'Salada', preco: 2.00 }
-        ];
-        
-        const produtos = {
-            lanches: [
-                { id: 'dog-tradicional', nome: 'Dog Tradicional', preco: 20.00, descricao: 'Pão, salsicha, molho vermelho, queijo e batata palha' },
-                { id: 'dog-calabresa', nome: 'Dog Calabresa', preco: 22.00, descricao: 'Pão, salsicha, molho vermelho, calabresa, queijo, milho e batata palha' },
-                { id: 'dog-frango', nome: 'Dog Frango', preco: 25.00, descricao: 'Pão, salsicha, molho de frango, queijo e batata palha' },
-                { id: 'dog-tudo', nome: 'Dog Tudo', preco: 30.00, descricao: 'Pão, salsicha, molho de frango, bacon, milho, tomate, alface, presunto, queijo e batata palha' }
-            ],
-            crepes: [
-                { id: 'crepe-frango', nome: 'Frango e Queijo', preco: 20.00, descricao: 'Crepe aberto com frango desfiado e queijo derretido' },
-                { id: 'crepe-presunto', nome: 'Presunto e Queijo', preco: 20.00, descricao: 'Crepe aberto com presunto e queijo derretido' },
-                { id: 'crepe-carne-seca', nome: 'Carne Seca e Queijo', preco: 25.00, descricao: 'Crepe aberto com carne seca desfiada e queijo derretido' },
-                { id: 'crepe-chocolate', nome: 'Chocolate ao Leite', preco: 25.00, descricao: 'Crepe doce com chocolate ao leite cremoso' },
-                { id: 'crepe-romeu', nome: 'Romeu e Julieta', preco: 25.00, descricao: 'Crepe doce com goiabada e queijo' }
-            ],
-            bebidas: [
-                { id: 'agua', nome: 'Água', preco: 4.00, descricao: 'Água mineral com ou sem gás' },
-                { id: 'coca-mini-220', nome: 'Coca-Cola Mini 220ml', preco: 5.00, descricao: 'Coca-Cola lata mini 220ml' },
-                { id: 'fanta-mini-220', nome: 'Fanta Mini 220ml', preco: 5.00, descricao: 'Fanta lata mini 220ml' },
-                { id: 'coca-350', nome: 'Coca-Cola/Zero 350ml', preco: 6.00, descricao: 'Coca-Cola ou Coca Zero lata 350ml' },
-                { id: 'fanta-350', nome: 'Fanta 350ml', preco: 6.00, descricao: 'Fanta Laranja lata 350ml' },
-                { id: 'guarana-antarctica-350', nome: 'Guaraná Antarctica 350ml', preco: 6.00, descricao: 'Guaraná Antarctica lata 350ml' },
-                { id: 'coca-600', nome: 'Coca-Cola 600ml', preco: 8.00, descricao: 'Coca-Cola garrafa 600ml' },
-                { id: 'coca-1l', nome: 'Coca-Cola 1 Litro', preco: 9.00, descricao: 'Coca-Cola garrafa 1 litro (INDISPONÍVEL P/ DELIVERY)' }
-            ]
+    const adicionais = [
+        { id: 'bacon',     nome: 'Bacon',     preco: 3.00 },
+        { id: 'calabresa', nome: 'Calabresa', preco: 3.00 },
+        { id: 'salada',    nome: 'Salada',    preco: 2.00 }
+    ];
+    
+    const produtos = {
+        lanches: [
+            { id: 'dog-tradicional', nome: 'Dog Tradicional', preco: 20.00, descricao: 'Pão, salsicha, molho vermelho, queijo e batata palha' },
+            { id: 'dog-calabresa',   nome: 'Dog Calabresa',   preco: 22.00, descricao: 'Pão, salsicha, molho vermelho, calabresa, queijo, milho e batata palha' },
+            { id: 'dog-frango',      nome: 'Dog Frango',      preco: 25.00, descricao: 'Pão, salsicha, molho de frango, queijo e batata palha' },
+            { id: 'dog-tudo',        nome: 'Dog Tudo',        preco: 30.00, descricao: 'Pão, salsicha, molho de frango, bacon, milho, tomate, alface, presunto, queijo e batata palha' }
+        ],
+        crepes: [
+            { id: 'crepe-frango',     nome: 'Frango e Queijo',     preco: 20.00, descricao: 'Crepe aberto com frango desfiado e queijo derretido' },
+            { id: 'crepe-presunto',   nome: 'Presunto e Queijo',   preco: 20.00, descricao: 'Crepe aberto com presunto e queijo derretido' },
+            { id: 'crepe-carne-seca', nome: 'Carne Seca e Queijo', preco: 25.00, descricao: 'Crepe aberto com carne seca desfiada e queijo derretido' },
+            { id: 'crepe-chocolate',  nome: 'Chocolate ao Leite',  preco: 25.00, descricao: 'Crepe doce com chocolate ao leite cremoso' },
+            { id: 'crepe-romeu',      nome: 'Romeu e Julieta',     preco: 25.00, descricao: 'Crepe doce com goiabada e queijo' }
+        ],
+        bebidas: [
+            { id: 'agua',                  nome: 'Água',                      preco: 4.00,  descricao: 'Água mineral com ou sem gás' },
+            { id: 'coca-mini-220',         nome: 'Coca-Cola Mini 220ml',      preco: 5.00,  descricao: 'Coca-Cola lata mini 220ml' },
+            { id: 'fanta-mini-220',        nome: 'Fanta Mini 220ml',          preco: 5.00,  descricao: 'Fanta lata mini 220ml' },
+            { id: 'coca-350',              nome: 'Coca-Cola/Zero 350ml',      preco: 6.00,  descricao: 'Coca-Cola ou Coca Zero lata 350ml' },
+            // FIX #8: Fanta e Guaraná separados mas com variação via observação no modal
+            { id: 'fanta-guarana-350',     nome: 'Fanta / Guaraná Antarctica 350ml', preco: 6.00, descricao: 'Fanta Laranja ou Guaraná Antarctica lata 350ml — indique qual na observação' },
+            { id: 'coca-600',              nome: 'Coca-Cola 600ml',           preco: 8.00,  descricao: 'Coca-Cola garrafa 600ml' },
+            // FIX #4: Flag unavailableForDelivery
+            { id: 'coca-1l', nome: 'Coca-Cola 1 Litro', preco: 9.00, descricao: 'Coca-Cola garrafa 1 litro', unavailableForDelivery: true }
+        ]
+    };
+    
+    let cart = [];
+    let currentModalBasePrice = 0;
+
+    // ─── PERSISTÊNCIA (LOCALSTORAGE) ────────────────────────────────────────
+
+    function saveCart() {
+        localStorage.setItem('simpleSaborCart', JSON.stringify(cart));
+    }
+
+    function loadCart() {
+        const saved = localStorage.getItem('simpleSaborCart');
+        if (saved) {
+            try { cart = JSON.parse(saved); } catch(e) { cart = []; }
+        }
+    }
+
+    function saveCustomerData() {
+        const method = document.getElementById('delivery-method')?.value;
+        if (!method) return;
+        const data = {
+            name:    document.getElementById('customer-name')?.value.trim() || '',
+            phone:   document.getElementById('customer-phone')?.value.trim() || '',
+            address: method === 'delivery' ? (document.getElementById('delivery-address')?.value.trim() || '') : ''
         };
-        
-        let cart = [];
-        let currentModalBasePrice = 0;
+        localStorage.setItem('simpleSaborCustomer', JSON.stringify(data));
+    }
 
-        // --- SISTEMA DE PERSISTÊNCIA DE DADOS (LOCALSTORAGE) ---
-        
-        function saveCart() {
-            localStorage.setItem('simpleSaborCart', JSON.stringify(cart));
+    function loadCustomerData() {
+        const saved = localStorage.getItem('simpleSaborCustomer');
+        if (!saved) return;
+        try {
+            const d = JSON.parse(saved);
+            const nameEl    = document.getElementById('customer-name');
+            const phoneEl   = document.getElementById('customer-phone');
+            const addressEl = document.getElementById('delivery-address');
+            if (nameEl    && d.name)    nameEl.value    = d.name;
+            if (phoneEl   && d.phone)   phoneEl.value   = d.phone;
+            if (addressEl && d.address) addressEl.value = d.address;
+        } catch(e) { /* ignora */ }
+    }
+
+    // ─── UTILITÁRIOS ────────────────────────────────────────────────────────
+
+    function formatBRL(value) {
+        return `R$ ${Number(value).toFixed(2).replace('.', ',')}`;
+    }
+
+    function formatMoneyDot(value) {
+        return `R$ ${Number(value).toFixed(2)}`;
+    }
+
+    function normalizePhoneDigits(value) {
+        return value.replace(/\D/g, '').slice(0, 11);
+    }
+
+    function formatPhoneBR(value) {
+        const d = normalizePhoneDigits(value);
+        if (!d.length) return '';
+        if (d.length <= 2)  return `(${d}`;
+        if (d.length <= 7)  return `(${d.slice(0,2)}) ${d.slice(2)}`;
+        return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7,11)}`;
+    }
+
+    function applyPhoneMask(input) {
+        input.value = formatPhoneBR(input.value);
+    }
+
+    function getSelectedDeliveryFee() {
+        const method = document.getElementById('delivery-method')?.value || '';
+        return method === 'delivery' ? DELIVERY_FEE : 0;
+    }
+
+    // FIX #5: Toast de feedback
+    function showToast(text) {
+        const toast = document.getElementById('toast');
+        const toastText = document.getElementById('toast-text');
+        toastText.textContent = text;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    // FIX #13: Modal customizado de confirmação
+    function showConfirmModal(message, onYes, onNo) {
+        const modal   = document.getElementById('confirm-modal');
+        const msgEl   = document.getElementById('confirm-message');
+        const yesBtn  = document.getElementById('confirm-yes');
+        const noBtn   = document.getElementById('confirm-no');
+
+        msgEl.textContent = message;
+        modal.classList.add('active');
+
+        const cleanup = () => modal.classList.remove('active');
+
+        yesBtn.onclick = () => { cleanup(); if (onYes) onYes(); };
+        noBtn.onclick  = () => { cleanup(); if (onNo)  onNo();  };
+    }
+
+    // ─── RENDERIZAÇÃO ────────────────────────────────────────────────────────
+
+    function renderProducts() {
+        const renderGrid = (gridId, items) => {
+            const grid = document.getElementById(gridId);
+            grid.innerHTML = '';
+            items.forEach(p => grid.appendChild(createProductCard(p)));
+        };
+        renderGrid('lanches-grid', produtos.lanches);
+        renderGrid('crepes-grid',  produtos.crepes);
+        renderGrid('bebidas-grid', produtos.bebidas);
+    }
+
+    function createProductCard(produto) {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.id = `card-${produto.id}`;
+
+        // FIX #4: Badge visual para itens indisponíveis p/ delivery
+        const unavailableBadge = produto.unavailableForDelivery
+            ? `<span class="badge-unavailable-delivery">⚠️ Indisponível p/ Delivery</span>`
+            : '';
+
+        const precoDisplay = produto.preco > 0
+            ? `<p class="text-2xl font-bold text-orange-500 mb-1">${formatBRL(produto.preco)}</p>`
+            : `<p class="text-xl font-semibold text-yellow-400 mb-1">Consulte o preço</p>`;
+
+        card.innerHTML = `
+            <h4 class="text-xl font-bold mb-2 text-white">${produto.nome}</h4>
+            <p class="text-gray-400 mb-3">${produto.descricao}</p>
+            ${precoDisplay}
+            <div class="mb-4">${unavailableBadge}</div>
+            <button
+                onclick="openAddModal('${produto.id}', '${produto.nome.replace(/'/g,"\\'")}', ${produto.preco}, ${!!produto.unavailableForDelivery})"
+                class="btn-primary w-full justify-center">
+                <i class="fas fa-plus"></i> Adicionar
+            </button>
+        `;
+        return card;
+    }
+
+    function openAddModal(id, nome, preco, unavailableForDelivery) {
+        const isCachorroQuente = id.startsWith('dog-');
+        currentModalBasePrice = Number(preco || 0);
+
+        // FIX #4: Impede adicionar ao carrinho se for delivery e item indisponível
+        const currentMethod = document.getElementById('delivery-method')?.value || '';
+        if (unavailableForDelivery && currentMethod === 'delivery') {
+            showToast('⚠️ Este item não está disponível para Delivery!');
+            return;
         }
 
-        function loadCart() {
-            const savedCart = localStorage.getItem('simpleSaborCart');
-            if (savedCart) {
-                try {
-                    cart = JSON.parse(savedCart);
-                } catch (e) {
-                    console.error('Erro ao ler o carrinho salvo.', e);
-                    cart = [];
-                }
-            }
-        }
+        const modal = document.createElement('div');
+        modal.id = 'add-modal';
+        modal.className = 'modal active';
 
-        function saveCustomerData() {
-            const deliveryMethod = document.getElementById('delivery-method')?.value;
-            if (deliveryMethod === 'delivery') {
-                const customerData = {
-                    name: document.getElementById('customer-name')?.value.trim() || '',
-                    phone: document.getElementById('customer-phone')?.value.trim() || '',
-                    address: document.getElementById('delivery-address')?.value.trim() || ''
-                };
-                localStorage.setItem('simpleSaborCustomer', JSON.stringify(customerData));
-            }
-        }
-
-        function loadCustomerData() {
-            const savedData = localStorage.getItem('simpleSaborCustomer');
-            if (savedData) {
-                try {
-                    const customerData = JSON.parse(savedData);
-                    
-                    const nameInput = document.getElementById('customer-name');
-                    const phoneInput = document.getElementById('customer-phone');
-                    const addressInput = document.getElementById('delivery-address');
-
-                    if (nameInput && customerData.name) nameInput.value = customerData.name;
-                    if (phoneInput && customerData.phone) phoneInput.value = customerData.phone;
-                    if (addressInput && customerData.address) addressInput.value = customerData.address;
-                } catch (e) {
-                    console.error('Erro ao ler os dados do cliente.', e);
-                }
-            }
-        }
-        
-        // --- FUNÇÕES UTILITÁRIAS ---
-
-        function formatBRL(value) {
-            return `R$ ${Number(value).toFixed(2).replace('.', ',')}`;
-        }
-
-        function formatMoneyDot(value) {
-            return `R$ ${Number(value).toFixed(2)}`;
-        }
-
-        function normalizePhoneDigits(value) {
-            return value.replace(/\D/g, '').slice(0, 11);
-        }
-
-        function formatPhoneBR(value) {
-            const digits = normalizePhoneDigits(value);
-            if (digits.length === 0) return '';
-            if (digits.length <= 2) return `(${digits}`;
-            if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-            return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
-        }
-
-        function applyPhoneMask(input) {
-            input.value = formatPhoneBR(input.value);
-        }
-
-        function getSelectedDeliveryFee() {
-            const deliveryMethodEl = document.getElementById('delivery-method');
-            const method = deliveryMethodEl ? deliveryMethodEl.value : '';
-            return method === 'delivery' ? DELIVERY_FEE : 0;
-        }
-        
-        // --- RENDERIZAÇÃO DA INTERFACE ---
-
-        function renderProducts() {
-            const lanchesGrid = document.getElementById('lanches-grid');
-            lanchesGrid.innerHTML = '';
-            produtos.lanches.forEach(produto => {
-                const card = createProductCard(produto, false);
-                lanchesGrid.appendChild(card);
-            });
-            
-            const crepesGrid = document.getElementById('crepes-grid');
-            crepesGrid.innerHTML = '';
-            produtos.crepes.forEach(produto => {
-                const card = createProductCard(produto, false);
-                crepesGrid.appendChild(card);
-            });
-            
-            const bebidasGrid = document.getElementById('bebidas-grid');
-            bebidasGrid.innerHTML = '';
-            produtos.bebidas.forEach(produto => {
-                const card = createProductCard(produto, false);
-                bebidasGrid.appendChild(card);
-            });
-        }
-        
-        function createProductCard(produto, isAlmoco) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            
-            const precoDisplay = produto.preco > 0
-                ? `<p class="text-2xl font-bold text-orange-500 mb-4">${formatBRL(produto.preco)}</p>`
-                : `<p class="text-xl font-semibold text-yellow-400 mb-4">Consulte o preço</p>`;
-            
-            card.innerHTML = `
-                <h4 class="text-xl font-bold mb-2 text-white">${produto.nome}</h4>
-                <p class="text-gray-400 mb-4">${produto.descricao}</p>
-                ${precoDisplay}
-                <button onclick="openAddModal('${produto.id}', '${produto.nome.replace(/'/g, "\\'")}', ${produto.preco}, ${isAlmoco})" class="btn-primary w-full justify-center">
-                    <i class="fas fa-plus"></i> Adicionar
-                </button>
+        let adicionaisHTML = '';
+        if (isCachorroQuente) {
+            adicionaisHTML = `
+                <div class="mb-4">
+                    <label class="form-label">Adicionais:</label>
+                    ${adicionais.map(a => `
+                        <label class="flex items-center gap-2 mb-2 cursor-pointer">
+                            <input type="checkbox" value="${a.id}" class="adicional-checkbox"
+                                   data-nome="${a.nome}" data-preco="${a.preco}"
+                                   onchange="updateModalTotal(${preco})">
+                            <span>${a.nome} (+${formatBRL(a.preco)})</span>
+                        </label>
+                    `).join('')}
+                </div>
             `;
-            
-            return card;
         }
-        
-        function openAddModal(id, nome, preco, isAlmoco) {
-            const isCachorroQuente = id.startsWith('dog-');
-            currentModalBasePrice = Number(preco || 0);
-            
-            const modal = document.createElement('div');
-            modal.id = 'add-modal';
-            modal.className = 'modal active';
-            
+
+        // FIX #3: Apenas um campo de preço (dinâmico), sem redundância
+        const precoDisplay = preco > 0
+            ? `<p class="modal-price-display">Total: <span id="modal-total">${formatBRL(preco)}</span></p>`
+            : `<p class="text-lg text-yellow-400 mb-4">Preço a consultar</p>`;
+
+        // Hint de variação para Fanta/Guaraná (FIX #8)
+        const obsPlaceholder = id === 'fanta-guarana-350'
+            ? 'Informe qual: Fanta Laranja ou Guaraná Antarctica'
+            : 'Observação: ex: Sem cebola...';
+
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">${nome}</h3>
+                    <button onclick="closeAddModal()" class="text-gray-400 hover:text-white text-2xl" aria-label="Fechar">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                ${precoDisplay}
+                ${adicionaisHTML}
+
+                <div class="mb-4">
+                    <label class="form-label">Quantidade:</label>
+                    <div class="quantity-control">
+                        <button onclick="changeModalQuantity(-1, ${preco})">-</button>
+                        <span id="modal-quantity">1</span>
+                        <button onclick="changeModalQuantity(1, ${preco})">+</button>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label">Observações:</label>
+                    <textarea id="modal-obs" class="form-input" rows="3" placeholder="${obsPlaceholder}"></textarea>
+                </div>
+
+                <div class="flex gap-3">
+                    <button onclick="addToCart('${id}', '${nome.replace(/'/g,"\\'")}', ${preco}, ${unavailableForDelivery})"
+                            class="btn-primary flex-1 justify-center">
+                        <i class="fas fa-check"></i> Adicionar
+                    </button>
+                    <button onclick="closeAddModal()" class="btn-secondary flex-1 justify-center">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+    }
+
+    function closeAddModal() {
+        const modal = document.getElementById('add-modal');
+        if (modal) modal.remove();
+        currentModalBasePrice = 0;
+    }
+
+    function changeModalQuantity(delta, basePreco) {
+        const el = document.getElementById('modal-quantity');
+        let qty = parseInt(el.textContent, 10) + delta;
+        if (qty < 1) qty = 1;
+        el.textContent = qty;
+        updateModalTotal(basePreco);
+    }
+
+    function updateModalTotal(basePreco) {
+        const totalEl = document.getElementById('modal-total');
+        if (!totalEl) return;
+        let adicionaisTotal = 0;
+        document.querySelectorAll('.adicional-checkbox:checked').forEach(cb => {
+            adicionaisTotal += Number(cb.dataset.preco || 0);
+        });
+        const qty = parseInt(document.getElementById('modal-quantity').textContent, 10);
+        totalEl.textContent = formatBRL((currentModalBasePrice + adicionaisTotal) * qty);
+    }
+
+    // ─── CARRINHO ────────────────────────────────────────────────────────────
+
+    function addToCart(id, nome, preco, unavailableForDelivery) {
+        const qty  = parseInt(document.getElementById('modal-quantity').textContent, 10);
+        const obs  = document.getElementById('modal-obs').value.trim();
+        let adicionaisSelecionados = [];
+        let precoAdicionais = 0;
+
+        document.querySelectorAll('.adicional-checkbox:checked').forEach(cb => {
+            adicionaisSelecionados.push(cb.dataset.nome);
+            precoAdicionais += Number(cb.dataset.preco || 0);
+        });
+
+        cart.push({
+            id:                  `${id}_${Date.now()}`,
+            produtoId:           id,
+            nome,
+            preco:               Number(preco) + precoAdicionais,
+            precoBase:           Number(preco),
+            precoAdicionais,
+            quantity:            qty,
+            obs,
+            adicionais:          adicionaisSelecionados,
+            unavailableForDelivery: !!unavailableForDelivery
+        });
+
+        updateCart();
+        closeAddModal();
+        document.getElementById('cart-button').style.display = 'flex';
+
+        // FIX #5: Toast de confirmação
+        showToast(`✅ ${nome} adicionado!`);
+
+        // FIX #5: Feedback visual no card
+        const cardEl = document.getElementById(`card-${id}`);
+        if (cardEl) {
+            cardEl.classList.add('added');
+            setTimeout(() => cardEl.classList.remove('added'), 1500);
+        }
+    }
+
+    function updateCart() {
+        saveCart();
+
+        const count    = cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
+        const subtotal = cart.reduce((s, i) => s + (Number(i.preco) * Number(i.quantity)), 0);
+        const fee      = getSelectedDeliveryFee();
+        const total    = subtotal + fee;
+
+        document.getElementById('cart-count').textContent    = count;
+        document.getElementById('cart-subtotal').textContent = formatBRL(subtotal);
+        document.getElementById('cart-delivery-fee').textContent = formatBRL(fee);
+        document.getElementById('cart-total').textContent    = formatBRL(total);
+
+        const cartItems = document.getElementById('cart-items');
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p class="text-center text-gray-400 py-4">Carrinho vazio</p>';
+            return;
+        }
+
+        cartItems.innerHTML = cart.map((item, index) => {
             let adicionaisHTML = '';
-            if (isCachorroQuente) {
-                adicionaisHTML = `
-                    <div class="mb-4">
-                        <label class="block text-sm font-semibold mb-2">Adicionais:</label>
-                        ${adicionais.map(adicional => `
-                            <label class="flex items-center gap-2 mb-2 cursor-pointer">
-                                <input type="checkbox" value="${adicional.id}" class="adicional-checkbox"
-                                       data-nome="${adicional.nome}"
-                                       data-preco="${adicional.preco}"
-                                       onchange="updateModalTotal()">
-                                <span>${adicional.nome} (+${formatBRL(adicional.preco)})</span>
-                            </label>
-                        `).join('')}
-                    </div>
-                `;
+            if (item.adicionais?.length) {
+                adicionaisHTML = item.adicionais.map(n => {
+                    const ad = adicionais.find(a => a.nome === n);
+                    return `<p class="text-yellow-400 text-sm">+ ${n}${ad ? ': ' + formatBRL(ad.preco) : ''}</p>`;
+                }).join('');
             }
-            
-            const precoDisplay = preco > 0
-                ? `<p class="text-xl font-bold text-orange-500 mb-4">Total do item: <span id="modal-total">${formatBRL(preco)}</span></p>`
-                : `<p class="text-lg text-yellow-400 mb-4">Consulte o preço</p>`;
-            
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-orange-500">${nome}</h3>
-                        <button onclick="closeAddModal()" class="text-gray-400 hover:text-white text-2xl" aria-label="Fechar">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    
-                    <p class="text-sm text-gray-300 mb-2">Valor base: ${preco > 0 ? formatBRL(preco) : 'Consultar'}</p>
-                    ${precoDisplay}
-                    
-                    ${adicionaisHTML}
-                    
-                    <div class="mb-4">
-                        <label class="block text-sm font-semibold mb-2">Quantidade:</label>
-                        <div class="quantity-control">
-                            <button onclick="changeModalQuantity(-1)">-</button>
-                            <span id="modal-quantity">1</span>
-                            <button onclick="changeModalQuantity(1)">+</button>
+
+            // FIX #4: Aviso visual no carrinho se delivery selecionado
+            const deliveryMethod = document.getElementById('delivery-method')?.value || '';
+            const deliveryWarning = (item.unavailableForDelivery && deliveryMethod === 'delivery')
+                ? `<p class="text-red-400 text-xs font-bold mt-1">⚠️ Indisponível p/ Delivery — altere a entrega ou remova</p>`
+                : '';
+
+            return `
+                <div class="bg-gray-800 p-4 rounded-lg mb-3">
+                    <div class="flex justify-between items-start gap-3">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-white">${item.nome}</h4>
+                            <p class="text-gray-400 text-sm">${formatBRL(item.precoBase)} (base)</p>
+                            ${adicionaisHTML}
+                            ${item.preco > 0
+                                ? `<p class="text-sm font-semibold text-orange-400 mt-1">
+                                       Total: ${formatBRL(item.preco * item.quantity)} (${item.quantity}x ${formatBRL(item.preco)})
+                                   </p>`
+                                : `<p class="text-sm text-yellow-400">Preço a consultar</p>`
+                            }
+                            ${item.obs ? `<p class="text-xs text-gray-500 mt-1">💬 ${item.obs}</p>` : ''}
+                            ${deliveryWarning}
                         </div>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label class="block text-sm font-semibold mb-2">Observações:</label>
-                        <textarea id="modal-obs" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600" rows="3" placeholder="Observação: ex: Sem cebola..."></textarea>
-                    </div>
-                    
-                    <div class="flex gap-3">
-                        <button onclick="addToCart('${id}', '${nome.replace(/'/g, "\\'")}', ${preco}, ${isAlmoco})" class="btn-primary flex-1 justify-center">
-                            <i class="fas fa-check"></i> Adicionar
-                        </button>
-                        <button onclick="closeAddModal()" class="btn-secondary flex-1 justify-center">
-                            <i class="fas fa-times"></i> Cancelar
+                        <button onclick="removeFromCart(${index})"
+                                class="text-red-500 hover:text-red-400 mt-1"
+                                aria-label="Remover ${item.nome} do carrinho">
+                            <i class="fas fa-trash"></i>
                         </button>
                     </div>
                 </div>
             `;
-            
-            document.body.appendChild(modal);
-        }
-        
-        function closeAddModal() {
-            const modal = document.getElementById('add-modal');
-            if (modal) {
-                modal.remove();
-            }
-            currentModalBasePrice = 0;
-        }
-        
-        function changeModalQuantity(delta) {
-            const quantityEl = document.getElementById('modal-quantity');
-            let quantity = parseInt(quantityEl.textContent, 10);
-            quantity += delta;
-            if (quantity < 1) quantity = 1;
-            quantityEl.textContent = quantity;
-            updateModalTotal();
-        }
-        
-        function updateModalTotal() {
-            const totalEl = document.getElementById('modal-total');
-            if (!totalEl) return;
-            
-            let adicionaisTotal = 0;
-            const checkboxes = document.querySelectorAll('.adicional-checkbox:checked');
-            checkboxes.forEach(cb => {
-                adicionaisTotal += Number(cb.dataset.preco || 0);
-            });
-            
-            const quantity = parseInt(document.getElementById('modal-quantity').textContent, 10);
-            const total = (currentModalBasePrice + adicionaisTotal) * quantity;
-            totalEl.textContent = formatBRL(total);
-        }
-        
-        // --- LÓGICA DO CARRINHO ---
+        }).join('');
+    }
 
-        function addToCart(id, nome, preco, isAlmoco) {
-            const quantity = parseInt(document.getElementById('modal-quantity').textContent, 10);
-            const obs = document.getElementById('modal-obs').value.trim();
-            
-            let adicionaisSelecionados = [];
-            let precoAdicionais = 0;
-            const checkboxes = document.querySelectorAll('.adicional-checkbox:checked');
-            checkboxes.forEach(cb => {
-                adicionaisSelecionados.push(cb.dataset.nome);
-                precoAdicionais += Number(cb.dataset.preco || 0);
-            });
-            
-            cart.push({
-                id: `${id}_${Date.now()}`,
-                produtoId: id,
-                nome: nome,
-                preco: Number(preco) + precoAdicionais,
-                precoBase: Number(preco),
-                precoAdicionais: precoAdicionais,
-                quantity: quantity,
-                obs: obs,
-                adicionais: adicionaisSelecionados,
-                isAlmoco: isAlmoco
-            });
-            
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+        // FIX #6: esconde botão se vazio, mas não fecha o modal se estiver aberto
+        if (cart.length === 0) {
+            document.getElementById('cart-button').style.display = 'none';
+        }
+    }
+
+    function clearCart() {
+        // FIX #13: usa modal customizado
+        showConfirmModal('Deseja limpar todo o carrinho?', () => {
+            cart = [];
             updateCart();
-            closeAddModal();
-            document.getElementById('cart-button').style.display = 'flex';
-        }
-        
-        function updateCart() {
-            // Salva o carrinho a cada alteração
-            saveCart();
+            document.getElementById('cart-button').style.display = 'none';
+            // FIX #6: fecha o modal do carrinho ao limpar tudo
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal.classList.contains('active')) toggleCart();
+        });
+    }
 
-            const count = cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
-            const subtotal = cart.reduce((sum, item) => sum + (Number(item.preco) * Number(item.quantity)), 0);
-            const deliveryFee = getSelectedDeliveryFee();
-            const total = subtotal + deliveryFee;
-            
-            document.getElementById('cart-count').textContent = count;
-            document.getElementById('cart-subtotal').textContent = formatBRL(subtotal);
-            document.getElementById('cart-delivery-fee').textContent = formatBRL(deliveryFee);
-            document.getElementById('cart-total').textContent = formatBRL(total);
-            
-            const cartItems = document.getElementById('cart-items');
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-center text-gray-400">Carrinho vazio</p>';
+    function toggleCart() {
+        document.getElementById('cart-modal').classList.toggle('active');
+        updateCart();
+    }
+
+    // FIX #2 e #12: campos comuns aparecem para retirada e delivery; endereço só para delivery
+    function toggleDeliveryFields() {
+        const method        = document.getElementById('delivery-method').value;
+        const commonFields  = document.getElementById('common-fields');
+        const deliveryFields= document.getElementById('delivery-fields');
+
+        if (method === 'delivery' || method === 'retirada') {
+            commonFields.style.display  = 'block';
+            deliveryFields.style.display = method === 'delivery' ? 'block' : 'none';
+            loadCustomerData();
+        } else {
+            commonFields.style.display  = 'none';
+            deliveryFields.style.display = 'none';
+            document.getElementById('payment-method').value = '';
+            document.getElementById('troco-value').value    = '';
+            document.getElementById('troco-field').style.display = 'none';
+        }
+    }
+
+    function toggleTrocoField() {
+        const payment    = document.getElementById('payment-method').value;
+        const trocoField = document.getElementById('troco-field');
+        trocoField.style.display = payment === 'dinheiro' ? 'block' : 'none';
+        if (payment !== 'dinheiro') document.getElementById('troco-value').value = '';
+    }
+
+    function getAdicionalPrecoByNome(nome) {
+        const a = adicionais.find(a => a.nome === nome);
+        return a ? Number(a.preco) : 0;
+    }
+
+    // ─── ENVIO DO PEDIDO ────────────────────────────────────────────────────
+
+    function sendOrder() {
+        const method = document.getElementById('delivery-method')?.value || '';
+        if (!method) { alert('Por favor, selecione a forma de entrega!'); return; }
+
+        const name    = document.getElementById('customer-name')?.value.trim()  || '';
+        const phone   = document.getElementById('customer-phone')?.value.trim() || '';
+        const payment = document.getElementById('payment-method')?.value        || '';
+
+        if (!name)  { alert('Por favor, informe seu nome!');      return; }
+        if (!phone) { alert('Por favor, informe seu telefone!');   return; }
+        if (normalizePhoneDigits(phone).length !== 11) {
+            alert('Telefone inválido. Use o padrão (00) 00000-0000');
+            return;
+        }
+
+        if (method === 'delivery') {
+            const address = document.getElementById('delivery-address')?.value.trim() || '';
+            if (!address) { alert('Por favor, informe o endereço para entrega!'); return; }
+        }
+
+        if (!payment) { alert('Por favor, selecione a forma de pagamento!'); return; }
+
+        if (payment === 'dinheiro') {
+            const troco = document.getElementById('troco-value')?.value.trim() || '';
+            if (!troco) { alert('Por favor, informe se precisa de troco!'); return; }
+        }
+
+        if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
+
+        // FIX #4: Bloqueia envio se tiver item indisponível p/ delivery selecionado
+        if (method === 'delivery') {
+            const hasUnavailable = cart.some(i => i.unavailableForDelivery);
+            if (hasUnavailable) {
+                alert('Seu carrinho tem itens indisponíveis para Delivery. Remova-os ou altere a forma de entrega.');
+                return;
+            }
+        }
+
+        // FIX #13 (mensagem WhatsApp): começa com saudação, não com confirmação prematura
+        let msg = '*PEDIDO — SIMPLÊ SABOR* 🍟\n\n';
+        msg += 'Olá! Gostaria de fazer um pedido:\n\n';
+        msg += '====================================\n\n';
+
+        cart.forEach((item, i) => {
+            const qty          = Number(item.quantity || 1);
+            const precoBase    = Number(item.precoBase || item.preco || 0);
+            const precoUnit    = Number(item.preco || 0);
+            const totalItem    = precoUnit * qty;
+            const temAdicionais = Array.isArray(item.adicionais) && item.adicionais.length > 0;
+
+            msg += `${i + 1}. *${item.nome}*\n`;
+
+            if (temAdicionais) {
+                msg += `   Qtd: ${qty} x ${formatMoneyDot(precoBase)}\n`;
+                item.adicionais.forEach(n => {
+                    const p = getAdicionalPrecoByNome(n);
+                    msg += `   + ${n}${p > 0 ? ': ' + formatMoneyDot(p) : ''}\n`;
+                });
+                if (item.obs) msg += `   Obs: ${item.obs}\n`;
+                msg += `   Subtotal: ${formatMoneyDot(totalItem)}\n\n`;
             } else {
-                cartItems.innerHTML = cart.map((item, index) => {
-                    let adicionaisDetalhes = '';
-                    if (item.adicionais && item.adicionais.length > 0) {
-                        const adicionaisComPreco = item.adicionais.map(nomeAdicional => {
-                            const adicional = adicionais.find(a => a.nome === nomeAdicional);
-                            return adicional ? `+ ${adicional.nome}: ${formatBRL(adicional.preco)}` : `+ ${nomeAdicional}`;
-                        });
-                        adicionaisDetalhes = `
-                            <div class="text-sm mt-1 mb-1">
-                                <p class="text-gray-400">${formatBRL(item.precoBase)} (base)</p>
-                                ${adicionaisComPreco.map(a => `<p class="text-yellow-400">${a}</p>`).join('')}
-                            </div>
-                        `;
-                    } else {
-                        adicionaisDetalhes = `
-                            <div class="text-sm mt-1 mb-1">
-                                <p class="text-gray-400">${formatBRL(item.precoBase)} (base)</p>
-                            </div>
-                        `;
-                    }
-                    
-                    // Adicionado aria-label no botão de lixeira
-                    return `
-                        <div class="bg-gray-800 p-4 rounded-lg mb-3">
-                            <div class="flex justify-between items-start mb-2 gap-3">
-                                <div class="flex-1">
-                                    <h4 class="font-bold text-white">${item.nome}</h4>
-                                    ${adicionaisDetalhes}
-                                    ${item.preco > 0 ? `
-                                        <p class="text-sm font-semibold text-orange-400">
-                                            Total do item: ${formatBRL(item.preco * item.quantity)} (${item.quantity}x ${formatBRL(item.preco)})
-                                        </p>
-                                    ` : `
-                                        <p class="text-sm text-yellow-400">Preço a consultar</p>
-                                    `}
-                                    ${item.obs ? `
-                                        <p class="text-xs text-gray-500 mt-1">💬 ${item.obs}</p>
-                                    ` : ''}
-                                </div>
-                                <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-400" aria-label="Remover ${item.nome} do carrinho">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+                msg += `   Qtd: ${qty} x ${formatMoneyDot(precoBase)} = ${formatMoneyDot(totalItem)}\n`;
+                if (item.obs) msg += `   Obs: ${item.obs}\n`;
+                msg += '\n';
             }
+        });
+
+        msg += '====================================\n\n';
+
+        const subtotal = cart.reduce((s, i) => s + (Number(i.preco) * Number(i.quantity)), 0);
+        const fee      = method === 'delivery' ? DELIVERY_FEE : 0;
+        const total    = subtotal + fee;
+        const hasConsulta = cart.some(i => Number(i.preco) === 0);
+
+        msg += '*RESUMO*\n';
+        msg += `Subtotal: ${formatMoneyDot(subtotal)}\n`;
+        msg += `Taxa de entrega: ${formatMoneyDot(fee)}\n`;
+        msg += hasConsulta
+            ? `*TOTAL:* ${formatMoneyDot(total)} + itens a consultar\n\n`
+            : `*TOTAL:* ${formatMoneyDot(total)}\n\n`;
+
+        const deliveryLabels = { retirada: 'Retirada no Local', delivery: 'Delivery' };
+        const paymentLabels  = { pix: 'PIX', cartao: 'Cartão', dinheiro: 'Dinheiro' };
+
+        msg += `*ENTREGA:* ${deliveryLabels[method]}\n`;
+        msg += `*NOME:* ${name}\n`;
+        msg += `*TELEFONE:* ${phone}\n`;
+
+        if (method === 'delivery') {
+            const address = document.getElementById('delivery-address')?.value.trim() || '';
+            msg += `*ENDEREÇO:* ${address}\n`;
+        } else {
+            msg += `*RETIRAR EM:* Rua Cassilândia, 1068, Chapadão do Sul, MS\n`;
         }
-        
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-            
-            if (cart.length === 0) {
-                document.getElementById('cart-button').style.display = 'none';
-            }
+
+        msg += `*PAGAMENTO:* ${paymentLabels[payment] || payment}\n`;
+
+        if (payment === 'dinheiro') {
+            const troco = document.getElementById('troco-value')?.value.trim() || '';
+            msg += `*TROCO PARA:* ${troco}\n`;
         }
-        
-        function clearCart() {
-            if (confirm('Deseja limpar todo o carrinho?')) {
+
+        msg += '\n====================================\n';
+        msg += '⏰ Terça a Domingo, 19:00 às 23:30 (horário de Brasília)\n';
+        msg += '📍 Rua Cassilândia, 1068 — Chapadão do Sul, MS';
+
+        saveCustomerData();
+
+        window.open(`https://wa.me/5567999496825?text=${encodeURIComponent(msg)}`, '_blank');
+
+        // FIX #13: Modal customizado no lugar do confirm() nativo
+        setTimeout(() => {
+            showConfirmModal('Pedido enviado com sucesso! Deseja limpar o carrinho?', () => {
                 cart = [];
                 updateCart();
                 document.getElementById('cart-button').style.display = 'none';
-            }
-        }
-        
-        function toggleCart() {
-            document.getElementById('cart-modal').classList.toggle('active');
-            updateCart();
-        }
-        
-        function toggleDeliveryFields() {
-            const deliveryMethod = document.getElementById('delivery-method').value;
-            const deliveryFields = document.getElementById('delivery-fields');
-            
-            if (deliveryMethod === 'delivery') {
-                deliveryFields.style.display = 'block';
-            } else {
-                deliveryFields.style.display = 'none';
-                document.getElementById('payment-method').value = '';
-                document.getElementById('troco-value').value = '';
-                document.getElementById('troco-field').style.display = 'none';
-            }
-        }
-        
-        function toggleTrocoField() {
-            const paymentMethod = document.getElementById('payment-method').value;
-            const trocoField = document.getElementById('troco-field');
-            
-            if (paymentMethod === 'dinheiro') {
-                trocoField.style.display = 'block';
-            } else {
-                trocoField.style.display = 'none';
-                document.getElementById('troco-value').value = '';
-            }
-        }
 
-        function getAdicionalPrecoByNome(nomeAdicional) {
-            const ad = adicionais.find(a => a.nome === nomeAdicional);
-            return ad ? Number(ad.preco) : 0;
-        }
-        
-        // --- FECHAMENTO E WHATSAPP ---
+                const cartModal = document.getElementById('cart-modal');
+                if (cartModal.classList.contains('active')) toggleCart();
 
-        function sendOrder() {
-            const deliveryMethod = document.getElementById('delivery-method')?.value || '';
-            
-            if (!deliveryMethod) {
-                alert('Por favor, selecione a forma de entrega!');
-                return;
-            }
-            
-            if (deliveryMethod === 'delivery') {
-                const customerName = document.getElementById('customer-name')?.value.trim() || '';
-                const customerPhone = document.getElementById('customer-phone')?.value.trim() || '';
-                const address = document.getElementById('delivery-address')?.value.trim() || '';
-                const payment = document.getElementById('payment-method')?.value || '';
-                
-                if (!customerName) {
-                    alert('Por favor, informe seu nome!');
-                    return;
-                }
-                
-                if (!customerPhone) {
-                    alert('Por favor, informe seu telefone!');
-                    return;
-                }
-
-                if (normalizePhoneDigits(customerPhone).length !== 11) {
-                    alert('Telefone inválido. Use o padrão (00) 00000-0000');
-                    return;
-                }
-                
-                if (!address) {
-                    alert('Por favor, informe o endereço para entrega!');
-                    return;
-                }
-                
-                if (!payment) {
-                    alert('Por favor, selecione a forma de pagamento!');
-                    return;
-                }
-                
-                if (payment === 'dinheiro') {
-                    const troco = document.getElementById('troco-value')?.value.trim() || '';
-                    if (!troco) {
-                        alert('Por favor, informe se precisa de troco!');
-                        return;
-                    }
-                }
-            }
-            
-            if (cart.length === 0) {
-                alert('Seu carrinho está vazio!');
-                return;
-            }
-            
-            let message = '*PEDIDO SIMPLE SABOR*\n\n';
-            message += '*Pedido Realizado. Obrigado!* \n\n';
-            message += '*Está sendo preparado pela Rosane com carinho!* \n\n';
-            message += '====================================\n\n';
-            
-            cart.forEach((item, index) => {
-                const qtd = Number(item.quantity || 1);
-                const precoBase = Number(item.precoBase || item.preco || 0);
-                const precoUnitFinal = Number(item.preco || 0);
-                const totalItem = precoUnitFinal * qtd;
-                const temAdicionais = Array.isArray(item.adicionais) && item.adicionais.length > 0;
-
-                message += `${index + 1}. *${item.nome}*\n`;
-
-                if (temAdicionais) {
-                    message += `   Qtd: ${qtd} x ${formatMoneyDot(precoBase)}\n`;
-
-                    item.adicionais.forEach(nomeAdicional => {
-                        const precoAd = getAdicionalPrecoByNome(nomeAdicional);
-                        if (precoAd > 0) {
-                            message += `   + Adicionais: ${nomeAdicional} ${formatMoneyDot(precoAd)}\n`;
-                        } else {
-                            message += `   + Adicionais: ${nomeAdicional}\n`;
-                        }
-                    });
-
-                    if (item.obs) {
-                        message += `   Obs: ${item.obs}\n`;
-                    }
-
-                    message += `   Total do item = ${formatMoneyDot(totalItem)}\n\n`;
-                } else {
-                    message += `   Qtd: ${qtd} x ${formatMoneyDot(precoBase)} = ${formatMoneyDot(totalItem)}\n`;
-
-                    if (item.obs) {
-                        message += `   Obs: ${item.obs}\n`;
-                    }
-
-                    message += `\n`;
-                }
+                const methodSelect = document.getElementById('delivery-method');
+                if (methodSelect) methodSelect.value = '';
+                toggleDeliveryFields();
+                updateCart();
             });
-            
-            message += '====================================\n\n';
-            
-            const subtotal = cart.reduce((sum, item) => sum + (Number(item.preco) * Number(item.quantity)), 0);
-            const deliveryFee = deliveryMethod === 'delivery' ? DELIVERY_FEE : 0;
-            const total = subtotal + deliveryFee;
-            const hasConsulta = cart.some(item => Number(item.preco) === 0);
-            
-            message += '*RESUMO DO PEDIDO*\n';
-            message += `Subtotal: ${formatMoneyDot(subtotal)}\n`;
-            message += `Taxa de entrega: ${formatMoneyDot(deliveryFee)}\n`;
-            
-            if (hasConsulta) {
-                message += `*TOTAL:* ${formatMoneyDot(total)} + itens a consultar\n\n`;
-            } else {
-                message += `*TOTAL:* ${formatMoneyDot(total)}\n\n`;
-            }
-            
-            const deliveryText = {
-                retirada: 'Retirada no Local',
-                delivery: 'Delivery'
-            };
-            message += `*FORMA DE ENTREGA:* ${deliveryText[deliveryMethod]}\n`;
-            
-            if (deliveryMethod === 'delivery') {
-                const customerName = document.getElementById('customer-name')?.value.trim() || '';
-                const customerPhone = document.getElementById('customer-phone')?.value.trim() || '';
-                const address = document.getElementById('delivery-address')?.value.trim() || '';
-                const payment = document.getElementById('payment-method')?.value || '';
-                
-                let paymentText = 'Dinheiro';
-                if (payment === 'cartao') paymentText = 'Cartão';
-                if (payment === 'pix') paymentText = 'PIX';
-                
-                message += `*NOME:* ${customerName}\n`;
-                message += `*TELEFONE:* ${customerPhone}\n`;
-                message += `*ENDEREÇO:* ${address}\n`;
-                message += `*PAGAMENTO:* ${paymentText}\n`;
-                
-                if (payment === 'dinheiro') {
-                    const troco = document.getElementById('troco-value')?.value.trim() || '';
-                    message += `*TROCO PARA:* ${troco}\n`;
-                }
-            } else {
-                message += '*RETIRAR EM:* Rua Cassilândia, 1068, Chapadão do Sul, MS\n';
-            }
-            
-            message += '\n====================================\n';
-            message += '*HORÁRIO:* Terça a domingo, 19:00 às 23:30 horário de Brasília';
-            
-            // Salva os dados do cliente apenas no momento do envio bem sucedido
-            saveCustomerData();
-            
-            const whatsappUrl = `https://wa.me/5567999496825?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            setTimeout(() => {
-                if (confirm('Pedido enviado! Deseja limpar o carrinho?')) {
-                    cart = [];
-                    updateCart();
-                    document.getElementById('cart-button').style.display = 'none';
-                    
-                    const cartModal = document.getElementById('cart-modal');
-                    if (cartModal.classList.contains('active')) {
-                        toggleCart();
-                    }
-                    
-                    const deliveryMethodSelect = document.getElementById('delivery-method');
-                    if (deliveryMethodSelect) deliveryMethodSelect.value = '';
-                    toggleDeliveryFields();
-                    updateCart();
-                }
-            }, 1000);
-        }
-        
-        // --- HORÁRIO DE FUNCIONAMENTO ---
+        }, 800);
+    }
 
-        function updateStatusBadge() {
-            const heroStatus = document.getElementById('status-badge');
-            const headerStatus = document.getElementById('header-status-badge');
-            const now = new Date();
+    // ─── STATUS DE HORÁRIO (FIX #1: lógica revisada) ────────────────────────
 
-            const formatter = new Intl.DateTimeFormat('pt-BR', {
-                timeZone: 'America/Sao_Paulo',
-                weekday: 'short',
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false
-            });
+    function updateStatusBadge() {
+        const heroEl   = document.getElementById('status-badge');
+        const headerEl = document.getElementById('header-status-badge');
+        const now      = new Date();
 
-            const parts = formatter.formatToParts(now);
-            const hour = parseInt(parts.find(p => p.type === 'hour')?.value || '0', 10);
-            const minute = parseInt(parts.find(p => p.type === 'minute')?.value || '0', 10);
-
-            const dayFormatter = new Intl.DateTimeFormat('en-US', {
-                timeZone: 'America/Sao_Paulo',
-                weekday: 'short'
-            });
-            const weekdayStr = dayFormatter.format(now);
-
-            const dayMap = {
-                Sun: 0,
-                Mon: 1,
-                Tue: 2,
-                Wed: 3,
-                Thu: 4,
-                Fri: 5,
-                Sat: 6
-            };
-            const dayOfWeek = dayMap[weekdayStr];
-
-            const currentMinutes = (hour * 60) + minute;
-
-            const openMinutes = 19 * 60;
-            const closeMinutes = (23 * 60) + 30;
-
-            let badgeClass = '';
-            let heroText = '';
-            let headerText = '';
-            let isOpen = false;
-
-            if (dayOfWeek === 1) {
-                badgeClass = 'badge-highlight badge-closed';
-                heroText = '🔴 Abrimos Terça às 19:00';
-                isOpen = false;
-            } else if (currentMinutes >= openMinutes && currentMinutes < closeMinutes) {
-                badgeClass = 'badge-highlight badge-open';
-                heroText = '🟢 Fecha às 23:30';
-                isOpen = true;
-            } else if (currentMinutes < openMinutes) {
-                badgeClass = 'badge-highlight badge-opens-soon';
-                heroText = '🟡 Abre às 19:00';
-                isOpen = false;
-            } else {
-                if (dayOfWeek === 0) {
-                    badgeClass = 'badge-highlight badge-closed';
-                    heroText = '🔴 Abrimos Terça às 19:00';
-                    isOpen = false;
-                } else {
-                    badgeClass = 'badge-highlight badge-opens-soon';
-                    heroText = '🟡 Abre às 19:00';
-                    isOpen = false;
-                }
-            }
-
-            headerText = isOpen ? '🟢 ABERTO' : '🔴 FECHADO';
-
-            if (heroStatus) {
-                heroStatus.className = badgeClass;
-                heroStatus.innerHTML = heroText;
-            }
-
-            if (headerStatus) {
-                headerStatus.className = isOpen ? 'badge-highlight badge-open' : 'badge-highlight badge-closed';
-                headerStatus.innerHTML = headerText;
-            }
-        }
-
-        // --- INICIALIZAÇÃO DA PÁGINA ---
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Carrega os dados salvos no navegador assim que o site abre
-            loadCart();
-            loadCustomerData();
-
-            renderProducts();
-            updateCart(); 
-            updateStatusBadge();
-            
-            // Garante que o botão flutuante apareça se o carrinho foi restaurado com itens
-            if (cart.length > 0) {
-                document.getElementById('cart-button').style.display = 'flex';
-            }
-            
-            const phoneInput = document.getElementById('customer-phone');
-            if (phoneInput) {
-                phoneInput.addEventListener('input', (e) => applyPhoneMask(e.target));
-                phoneInput.addEventListener('blur', (e) => applyPhoneMask(e.target));
-            }
-            
-            setInterval(updateStatusBadge, 60000);
+        // Dia da semana em Brasília
+        const dayFormatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Sao_Paulo', weekday: 'short'
         });
-    </script>
+        const dayStr = dayFormatter.format(now); // "Mon", "Tue", ...
+        const dayMap = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
+        const dow    = dayMap[dayStr];
+
+        // Hora e minuto em Brasília
+        const timeFormatter = new Intl.DateTimeFormat('pt-BR', {
+            timeZone: 'America/Sao_Paulo',
+            hour: '2-digit', minute: '2-digit', hour12: false
+        });
+        const parts  = timeFormatter.formatToParts(now);
+        const hour   = parseInt(parts.find(p => p.type === 'hour')?.value   || '0', 10);
+        const minute = parseInt(parts.find(p => p.type === 'minute')?.value || '0', 10);
+        const totalMin = hour * 60 + minute;
+
+        const OPEN  = 19 * 60;       // 19:00
+        const CLOSE = 23 * 60 + 30;  // 23:30
+
+        // Segunda-feira (1) = dia de folga em qualquer horário
+        const isClosed = dow === 1;
+        // FIX #1: Domingo (0) após as 23:30 também é fechado (próximo aberto = terça)
+        const isSundayAfterClose = (dow === 0 && totalMin >= CLOSE);
+        const isOpen = !isClosed && !isSundayAfterClose && totalMin >= OPEN && totalMin < CLOSE;
+        const opensSoon = !isClosed && !isSundayAfterClose && totalMin < OPEN;
+
+        let heroText   = '';
+        let badgeClass = 'badge-highlight ';
+
+        if (isOpen) {
+            badgeClass += 'badge-open';
+            heroText    = '🟢 Aberto — fecha às 23:30';
+        } else if (opensSoon) {
+            badgeClass += 'badge-opens-soon';
+            heroText    = '🟡 Abre às 19:00';
+        } else {
+            // Fechado: calcula próxima abertura
+            badgeClass += 'badge-closed';
+            if (dow === 1 || isSundayAfterClose) {
+                heroText = '🔴 Fechado — abrimos Terça às 19:00';
+            } else {
+                // Passou das 23:30 num dia qualquer (não 2ª nem dom)
+                heroText = '🔴 Fechado — voltamos amanhã às 19:00';
+            }
+        }
+
+        if (heroEl) {
+            heroEl.className   = badgeClass;
+            heroEl.innerHTML   = heroText;
+        }
+        if (headerEl) {
+            headerEl.className = isOpen ? 'badge-highlight badge-open' : 'badge-highlight badge-closed';
+            headerEl.innerHTML = isOpen ? '🟢 ABERTO' : '🔴 FECHADO';
+        }
+    }
+
+    // ─── INICIALIZAÇÃO ───────────────────────────────────────────────────────
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCart();
+        renderProducts();
+        updateCart();
+        updateStatusBadge();
+
+        if (cart.length > 0) {
+            document.getElementById('cart-button').style.display = 'flex';
+        }
+
+        const phoneInput = document.getElementById('customer-phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', e => applyPhoneMask(e.target));
+            phoneInput.addEventListener('blur',  e => applyPhoneMask(e.target));
+        }
+
+        setInterval(updateStatusBadge, 60000);
+    });
+</script>
+```
 
 </body>
 </html>
