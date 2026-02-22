@@ -813,7 +813,7 @@
             <div style="font-size:3.5rem; margin-bottom:1rem;">🔴</div>
             <h3 style="font-family:'Sunflower',cursive; font-size:1.75rem; font-weight:700; color:#ef4444; margin-bottom:0.75rem;">Estamos Fechados</h3>
             <p style="color:#d1d5db; margin-bottom:0.5rem;">No momento não estamos aceitando pedidos.</p>
-            <p style="color:#F98917; font-weight:700; font-size:1.05rem; margin-bottom:1.75rem;" id="closed-modal-next">Abriremos em breve às 19:00 🕖</p>
+            <p style="color:#F98917; font-weight:700; font-size:1.05rem; margin-bottom:1.75rem;" id="closed-modal-next">Abriremos em breve às 19:00 BR 🕖</p>
             <a href="https://wa.me/5567999496825?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20o%20Simplê%20Sabor!"
                target="_blank"
                style="display:inline-flex; align-items:center; gap:0.6rem; background:linear-gradient(135deg,#25D366,#128C7E); color:white; padding:0.9rem 1.75rem; border-radius:50px; font-weight:700; font-size:1rem; text-decoration:none; margin-bottom:1rem; box-shadow:0 4px 15px rgba(37,211,102,0.35);">
@@ -1018,7 +1018,7 @@
                 } else if (reason === 'pos-fechamento') {
                     nextEl.textContent = '📅 Voltamos amanhã às 19:00 🕖';
                 } else {
-                    nextEl.textContent = '🕖 Abriremos hoje às 19:00!';
+                    nextEl.textContent = '🕖 Abriremos hoje às 19:00 BR!';
                 }
             }
 
@@ -1503,18 +1503,18 @@
 
             if (isOpen) {
                 badgeClass += 'badge-open';
-                heroText    = '🟢 Aberto — fecha às 23:30';
+                heroText    = '🟢 Aberto — fecha às 23:30 BR';
             } else if (opensSoon) {
                 badgeClass += 'badge-opens-soon';
-                heroText    = '🟡 Abre às 19:00';
+                heroText    = '🟡 Abre às 19:00 BR';
             } else {
                 // Fechado: calcula próxima abertura
                 badgeClass += 'badge-closed';
                 if (dow === 1 || isSundayAfterClose) {
-                    heroText = '🔴 Fechado — abriremos Terça às 19:00';
+                    heroText = '🔴 Fechado — abriremos Terça às 19:00 BR';
                 } else {
                     // Passou das 23:30 num dia qualquer (não 2ª nem dom)
-                    heroText = '🔴 Fechado — voltamos amanhã às 19:00';
+                    heroText = '🔴 Fechado — voltamos amanhã às 19:00 BR';
                 }
             }
 
