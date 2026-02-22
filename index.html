@@ -713,7 +713,7 @@
                     
                     <div id="troco-field" style="display: none;">
                         <label class="block text-sm font-semibold mb-2">Troco para quanto?</label>
-                        <input type="text" id="troco-value" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Ex: R$ 50,00">
+                        <input type="text" id="troco-value" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Ex: 170">
                     </div>
                 </div>
                 
@@ -768,6 +768,10 @@
         
         function formatBRL(value) {
             return `R$ ${Number(value).toFixed(2).replace('.', ',')}`;
+        }
+
+        function formatMoneyDot(value) {
+            return `R$ ${Number(value).toFixed(2)}`;
         }
 
         function normalizePhoneDigits(value) {
@@ -1142,33 +1146,45 @@
             }
             
             let message = '*PEDIDO SIMPLE SABOR*\n\n';
-            message += '*Pedido Realizado. Obrigado!*\n\n';
-            message += '*Feito pela Rosane com carinho!*\n\n';
+            message += '*Pedido Realizado. Obrigado!* \n\n';
+            message += '*Está sendo preparado pela Rosane com carinho!* \n\n';
             message += '====================================\n\n';
             
-            cart.forEach((item) => {
+            cart.forEach((item, index) => {
                 const qtd = Number(item.quantity || 1);
+                const precoBase = Number(item.precoBase || item.preco || 0);
                 const precoUnitFinal = Number(item.preco || 0);
                 const totalItem = precoUnitFinal * qtd;
+                const temAdicionais = Array.isArray(item.adicionais) && item.adicionais.length > 0;
 
-                message += `${item.nome} ${qtd}x ${formatBRL(precoUnitFinal)}\n`;
+                message += `${index + 1}. *${item.nome}*\n`;
 
-                if (item.adicionais && item.adicionais.length > 0) {
+                if (temAdicionais) {
+                    message += `   Qtd: ${qtd} x ${formatMoneyDot(precoBase)}\n`;
+
                     item.adicionais.forEach(nomeAdicional => {
                         const precoAd = getAdicionalPrecoByNome(nomeAdicional);
                         if (precoAd > 0) {
-                            message += `  + ${nomeAdicional} ${formatBRL(precoAd)}\n`;
+                            message += `   + Adicionais: ${nomeAdicional} ${formatMoneyDot(precoAd)}\n`;
                         } else {
-                            message += `  + ${nomeAdicional}\n`;
+                            message += `   + Adicionais: ${nomeAdicional}\n`;
                         }
                     });
-                }
 
-                if (item.obs) {
-                    message += `  Obs: ${item.obs}\n`;
-                }
+                    if (item.obs) {
+                        message += `   Obs: ${item.obs}\n`;
+                    }
 
-                message += `  Total item: ${formatBRL(totalItem)}\n\n`;
+                    message += `   Total do item = ${formatMoneyDot(totalItem)}\n\n`;
+                } else {
+                    message += `   Qtd: ${qtd} x ${formatMoneyDot(precoBase)} = ${formatMoneyDot(totalItem)}\n`;
+
+                    if (item.obs) {
+                        message += `   Obs: ${item.obs}\n`;
+                    }
+
+                    message += `\n`;
+                }
             });
             
             message += '====================================\n\n';
@@ -1179,13 +1195,13 @@
             const hasConsulta = cart.some(item => Number(item.preco) === 0);
             
             message += '*RESUMO DO PEDIDO*\n';
-            message += `Subtotal: ${formatBRL(subtotal)}\n`;
-            message += `Taxa de entrega: ${formatBRL(deliveryFee)}\n`;
+            message += `Subtotal: ${formatMoneyDot(subtotal)}\n`;
+            message += `Taxa de entrega: ${formatMoneyDot(deliveryFee)}\n`;
             
             if (hasConsulta) {
-                message += `*TOTAL:* ${formatBRL(total)} + itens a consultar\n\n`;
+                message += `*TOTAL:* ${formatMoneyDot(total)} + itens a consultar\n\n`;
             } else {
-                message += `*TOTAL:* ${formatBRL(total)}\n\n`;
+                message += `*TOTAL:* ${formatMoneyDot(total)}\n\n`;
             }
             
             const deliveryText = {
