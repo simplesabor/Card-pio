@@ -237,7 +237,7 @@
                     rgba(35, 31, 32, 0.95) 85%,
                     #231F20 100%
                 ),
-                url('https://www.genspark.ai/api/files/s/Q37wu1c9');
+                url('assets/background-hero-mobile.webp'); /* Caminho da imagem corrigido */
                 background-size: cover;
                 background-position: center center;
                 background-repeat: no-repeat;
@@ -663,7 +663,7 @@
                 <h2 class="text-3xl font-bold text-orange-500">
                     <i class="fas fa-shopping-cart"></i> Seu Pedido
                 </h2>
-                <button onclick="toggleCart()" class="text-gray-400 hover:text-white text-3xl">
+                <button onclick="toggleCart()" class="text-gray-400 hover:text-white text-3xl" aria-label="Fechar carrinho">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -713,7 +713,7 @@
                     
                     <div id="troco-field" style="display: none;">
                         <label class="block text-sm font-semibold mb-2">Troco para quanto?</label>
-                        <input type="text" id="troco-value" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Ex: 170">
+                        <input type="text" id="troco-value" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 mb-3" placeholder="Ex: 170 (Ou digite 'Sem troco')">
                     </div>
                 </div>
                 
@@ -765,7 +765,58 @@
         
         let cart = [];
         let currentModalBasePrice = 0;
+
+        // --- SISTEMA DE PERSISTÊNCIA DE DADOS (LOCALSTORAGE) ---
         
+        function saveCart() {
+            localStorage.setItem('simpleSaborCart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+            const savedCart = localStorage.getItem('simpleSaborCart');
+            if (savedCart) {
+                try {
+                    cart = JSON.parse(savedCart);
+                } catch (e) {
+                    console.error('Erro ao ler o carrinho salvo.', e);
+                    cart = [];
+                }
+            }
+        }
+
+        function saveCustomerData() {
+            const deliveryMethod = document.getElementById('delivery-method')?.value;
+            if (deliveryMethod === 'delivery') {
+                const customerData = {
+                    name: document.getElementById('customer-name')?.value.trim() || '',
+                    phone: document.getElementById('customer-phone')?.value.trim() || '',
+                    address: document.getElementById('delivery-address')?.value.trim() || ''
+                };
+                localStorage.setItem('simpleSaborCustomer', JSON.stringify(customerData));
+            }
+        }
+
+        function loadCustomerData() {
+            const savedData = localStorage.getItem('simpleSaborCustomer');
+            if (savedData) {
+                try {
+                    const customerData = JSON.parse(savedData);
+                    
+                    const nameInput = document.getElementById('customer-name');
+                    const phoneInput = document.getElementById('customer-phone');
+                    const addressInput = document.getElementById('delivery-address');
+
+                    if (nameInput && customerData.name) nameInput.value = customerData.name;
+                    if (phoneInput && customerData.phone) phoneInput.value = customerData.phone;
+                    if (addressInput && customerData.address) addressInput.value = customerData.address;
+                } catch (e) {
+                    console.error('Erro ao ler os dados do cliente.', e);
+                }
+            }
+        }
+        
+        // --- FUNÇÕES UTILITÁRIAS ---
+
         function formatBRL(value) {
             return `R$ ${Number(value).toFixed(2).replace('.', ',')}`;
         }
@@ -796,6 +847,8 @@
             return method === 'delivery' ? DELIVERY_FEE : 0;
         }
         
+        // --- RENDERIZAÇÃO DA INTERFACE ---
+
         function renderProducts() {
             const lanchesGrid = document.getElementById('lanches-grid');
             lanchesGrid.innerHTML = '';
@@ -873,7 +926,7 @@
                 <div class="modal-content">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-2xl font-bold text-orange-500">${nome}</h3>
-                        <button onclick="closeAddModal()" class="text-gray-400 hover:text-white text-2xl">
+                        <button onclick="closeAddModal()" class="text-gray-400 hover:text-white text-2xl" aria-label="Fechar">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
@@ -943,6 +996,8 @@
             totalEl.textContent = formatBRL(total);
         }
         
+        // --- LÓGICA DO CARRINHO ---
+
         function addToCart(id, nome, preco, isAlmoco) {
             const quantity = parseInt(document.getElementById('modal-quantity').textContent, 10);
             const obs = document.getElementById('modal-obs').value.trim();
@@ -974,6 +1029,9 @@
         }
         
         function updateCart() {
+            // Salva o carrinho a cada alteração
+            saveCart();
+
             const count = cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
             const subtotal = cart.reduce((sum, item) => sum + (Number(item.preco) * Number(item.quantity)), 0);
             const deliveryFee = getSelectedDeliveryFee();
@@ -1009,6 +1067,7 @@
                         `;
                     }
                     
+                    // Adicionado aria-label no botão de lixeira
                     return `
                         <div class="bg-gray-800 p-4 rounded-lg mb-3">
                             <div class="flex justify-between items-start mb-2 gap-3">
@@ -1026,7 +1085,7 @@
                                         <p class="text-xs text-gray-500 mt-1">💬 ${item.obs}</p>
                                     ` : ''}
                                 </div>
-                                <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-400">
+                                <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-400" aria-label="Remover ${item.nome} do carrinho">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -1066,9 +1125,6 @@
                 deliveryFields.style.display = 'block';
             } else {
                 deliveryFields.style.display = 'none';
-                document.getElementById('customer-name').value = '';
-                document.getElementById('customer-phone').value = '';
-                document.getElementById('delivery-address').value = '';
                 document.getElementById('payment-method').value = '';
                 document.getElementById('troco-value').value = '';
                 document.getElementById('troco-field').style.display = 'none';
@@ -1092,6 +1148,8 @@
             return ad ? Number(ad.preco) : 0;
         }
         
+        // --- FECHAMENTO E WHATSAPP ---
+
         function sendOrder() {
             const deliveryMethod = document.getElementById('delivery-method')?.value || '';
             
@@ -1134,7 +1192,7 @@
                 if (payment === 'dinheiro') {
                     const troco = document.getElementById('troco-value')?.value.trim() || '';
                     if (!troco) {
-                        alert('Por favor, informe o troco!');
+                        alert('Por favor, informe se precisa de troco!');
                         return;
                     }
                 }
@@ -1236,6 +1294,9 @@
             message += '\n====================================\n';
             message += '*HORÁRIO:* Terça a domingo, 19:00 às 23:30 horário de Brasília';
             
+            // Salva os dados do cliente apenas no momento do envio bem sucedido
+            saveCustomerData();
+            
             const whatsappUrl = `https://wa.me/5567999496825?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
             
@@ -1258,6 +1319,8 @@
             }, 1000);
         }
         
+        // --- HORÁRIO DE FUNCIONAMENTO ---
+
         function updateStatusBadge() {
             const heroStatus = document.getElementById('status-badge');
             const headerStatus = document.getElementById('header-status-badge');
@@ -1339,10 +1402,21 @@
             }
         }
 
+        // --- INICIALIZAÇÃO DA PÁGINA ---
+
         document.addEventListener('DOMContentLoaded', () => {
+            // Carrega os dados salvos no navegador assim que o site abre
+            loadCart();
+            loadCustomerData();
+
             renderProducts();
-            updateCart();
+            updateCart(); 
             updateStatusBadge();
+            
+            // Garante que o botão flutuante apareça se o carrinho foi restaurado com itens
+            if (cart.length > 0) {
+                document.getElementById('cart-button').style.display = 'flex';
+            }
             
             const phoneInput = document.getElementById('customer-phone');
             if (phoneInput) {
